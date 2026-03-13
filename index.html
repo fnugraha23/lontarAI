@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lontara Intelligence - Inovasi analisis spasial, ilmu tanah, dan solusi lingkungan berbasis data."
+    />
+    <title>Lontara | Intelligence for Land & Environment</title>
+
+    <link rel="icon" type="image/png" href="aset/logo/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+
+    <style>
+      /* --- Smart Logo Filter --- */
+      #main-logo {
+        transition:
+          filter 0.3s ease,
+          transform 0.3s ease;
+        max-height: 38px;
+        width: auto;
+      }
+
+      /* Otomatis menjadi putih saat Dark Theme aktif */
+      body.dark-theme #main-logo {
+        filter: brightness(0) invert(1);
+      }
+
+      .nav-link-ajax.active {
+        color: var(--accent) !important;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <header class="header" id="header">
+      <div class="progress-bar" id="progress-bar"></div>
+
+      <div class="container nav-container">
+        <div class="logo">
+          <a
+            href="sumber-konten/beranda.html"
+            class="nav-link-ajax"
+            aria-label="Kembali ke Beranda"
+          >
+            <img
+              id="main-logo"
+              src="aset/logo/logo-hitam.png"
+              alt="Lontara Environmental Intelligence Logo"
+            />
+          </a>
+        </div>
+
+        <nav class="nav" id="nav-menu">
+          <div class="nav-links">
+            <a href="sumber-konten/layanan/layanan.html" class="nav-link-ajax"
+              >Layanan</a
+            >
+            <a
+              href="sumber-konten/portofolio/portofolio.html"
+              class="nav-link-ajax"
+              >Portofolio</a
+            >
+            <a href="sumber-konten/artikel/artikel.html" class="nav-link-ajax"
+              >Artikel</a
+            >
+            <a
+              href="sumber-konten/publikasi/publikasi.html"
+              class="nav-link-ajax"
+              >Publikasi</a
+            >
+            <a
+              href="sumber-konten/aset-digital/aset-digital.html"
+              class="nav-link-ajax"
+              >Aset Digital</a
+            >
+            <a href="sumber-konten/tentang/tentang.html" class="nav-link-ajax"
+              >Tentang</a
+            >
+          </div>
+
+          <div class="nav-controls">
+            <button
+              id="theme-toggle"
+              class="theme-btn"
+              title="Ganti Mode Terang/Gelap"
+              aria-label="Toggle Theme"
+            >
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="search-wrapper">
+              <form id="search-form" action="search/" method="GET">
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Cari riset..."
+                  class="search-input"
+                  aria-label="Cari konten"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="search-submit"
+                  aria-label="Kirim Pencarian"
+                >
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <a
+            href="sumber-konten/kontak/kontak.html"
+            class="nav-cta nav-link-ajax"
+            >Kontak</a
+          >
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Buka Menu Navigasi"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="render-konten">
+      <div
+        class="loader-placeholder"
+        style="
+          min-height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div class="spinner"></div>
+        <p
+          style="
+            margin-top: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+          "
+        >
+          MENGHUBUNGKAN RADAR SPASIAL...
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-split">
+        <div class="footer-brand">
+          <h4>Lontara</h4>
+          <p>Environmental & Land Intelligence Studio.</p>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2026 Lontara. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/app-shell.js"></script>
+    <script src="js/form-handler.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animasi.js"></script>
+    <script src="js/pencarian.js"></script>
+  </body>
+</html>
