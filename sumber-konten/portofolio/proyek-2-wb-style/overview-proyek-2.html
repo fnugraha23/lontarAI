@@ -1,0 +1,260 @@
+<style>
+  /* Styling Lokal Khusus Proyek 2 */
+  .hero-product {
+    padding: 100px 0 60px;
+    background: linear-gradient(to bottom, var(--bg-light), var(--bg-main));
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .breadcrumb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #123b3a; /* Lontara Primary */
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .breadcrumb-back:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .product-badge {
+    display: inline-block;
+    background: rgba(0, 184, 169, 0.1);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .icon-container {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: rgba(0, 184, 169, 0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .webgis-container {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    height: 650px;
+    border: 1px solid var(--border);
+    margin: 40px 0 20px;
+    background: #f1f5f9;
+  }
+
+  .webgis-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .webgis-container {
+      height: 450px;
+    }
+  }
+</style>
+
+<section class="hero-product">
+  <div class="container">
+    <a
+      href="sumber-konten/portofolio/portofolio.html"
+      class="nav-link-ajax breadcrumb-back"
+    >
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio
+    </a>
+    <br />
+    <span class="product-badge">Konservasi Tanah & Air</span>
+    <h1
+      class="reveal-init"
+      style="
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 24px;
+        color: #123b3a;
+        font-weight: 800;
+        line-height: 1.2;
+      "
+    >
+      Sistem Informasi Spasial<br />Kinerja Sub-DAS Tanralili
+    </h1>
+    <p
+      class="reveal-init"
+      style="
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 800px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      "
+    >
+      Platform interaktif pemetaan tutupan lahan dan simulasi hidrologi
+      memanfaatkan pendekatan
+      <strong>Machine Learning</strong> untuk mendukung arahan tata guna lahan
+      berkelanjutan di Sulawesi Selatan.
+    </p>
+    <div
+      class="reveal-init"
+      style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap"
+    >
+      <a
+        href="sumber-konten/portofolio/proyek-2-wb-style/dashboard.html"
+        class="btn-primary"
+        target="_blank"
+      >
+        Buka Layar Penuh
+      </a>
+      <a href="#proyek-detail" class="btn-secondary">Pelajari Lebih Lanjut</a>
+    </div>
+  </div>
+</section>
+
+<section id="proyek-detail" class="section">
+  <div class="container">
+    <h2 class="section-title reveal-init">Urgensi Visualisasi Data</h2>
+    <p class="section-subtitle reveal-init">
+      Berdasarkan riset pascasarjana di IPB dan UNHAS, perubahan tata guna lahan
+      berdampak langsung pada fluktuasi debit air. Dashboard ini membantu
+      memahami faktor penentu potensi dampak secara komprehensif.
+    </p>
+
+    <div class="grid-3">
+      <div class="card reveal-init">
+        <div class="icon-container">
+          <i class="fa-solid fa-map-location-dot" style="font-size: 1.5rem"></i>
+        </div>
+        <h3>Data Spasial Aktual</h3>
+        <p>
+          Integrasi dataset tutupan lahan resolusi tinggi untuk analisis tingkat
+          kerentanan lahan di Sub-DAS Tanralili secara presisi.
+        </p>
+      </div>
+
+      <div class="card reveal-init">
+        <div
+          class="icon-container"
+          style="color: #2563eb; background-color: #eff6ff"
+        >
+          <i class="fa-solid fa-droplet" style="font-size: 1.5rem"></i>
+        </div>
+        <h3>Simulasi Debit Air</h3>
+        <p>
+          Pemodelan hidrologi untuk memprediksi respons DAS terhadap berbagai
+          skenario perubahan penggunaan lahan.
+        </p>
+      </div>
+
+      <div class="card reveal-init">
+        <div
+          class="icon-container"
+          style="color: #059669; background-color: #ecfdf5"
+        >
+          <i class="fa-solid fa-chart-simple" style="font-size: 1.5rem"></i>
+        </div>
+        <h3>Analisis Interaktif</h3>
+        <p>
+          Dashboard yang menghubungkan peta Leaflet dengan visualisasi grafik
+          statistik secara dinamis menggunakan standar estetika data World Bank.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="section"
+  style="background-color: var(--bg-light); padding-bottom: 100px"
+>
+  <div class="container">
+    <h2 class="section-title reveal-init">Pratinjau Dashboard</h2>
+    <p class="section-subtitle reveal-init">
+      Live Demo: Jelajahi integrasi data spasial dan grafik analitik untuk
+      wilayah Sub-DAS Tanralili di bawah ini.
+    </p>
+
+    <div class="webgis-container reveal-init">
+      <iframe
+        src="sumber-konten/portofolio/proyek-2-wb-style/dashboard.html"
+        title="Interactive Dashboard Tanralili"
+        class="webgis-iframe"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <div
+      style="
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-style: italic;
+      "
+    >
+      <p>
+        * Jika tampilan terpotong, gunakan tombol "Buka Layar Penuh" di bagian
+        atas halaman.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section
+  class="section section-cta-green"
+  style="
+    background-color: #123b3a !important;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+  "
+>
+  <div class="container">
+    <h2
+      class="reveal-init"
+      style="color: white; font-size: 2.2rem; margin-bottom: 20px"
+    >
+      Siap Menerapkan Pemodelan Serupa?
+    </h2>
+    <p
+      class="reveal-init"
+      style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px"
+    >
+      Diskusikan kebutuhan integrasi analisis lahan dan tata air berbasis
+      intelijen spasial untuk organisasi Anda.
+    </p>
+    <div class="reveal-init">
+      <a
+        href="sumber-konten/kontak/kontak.html"
+        class="nav-link-ajax btn-cta-white"
+        style="
+          background: white;
+          color: #123b3a;
+          padding: 16px 40px;
+          border-radius: 8px;
+          font-weight: 800;
+          text-decoration: none;
+        "
+      >
+        Jadwalkan Konsultasi Sekarang
+      </a>
+    </div>
+  </div>
+</section>

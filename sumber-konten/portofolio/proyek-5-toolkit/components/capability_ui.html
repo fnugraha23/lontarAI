@@ -1,0 +1,358 @@
+<div class="animate__animated animate__fadeIn position-relative">
+  <div class="row align-items-center mb-5 text-start">
+    <div class="col-md-8">
+      <div
+        class="badge bg-amber-light text-amber px-3 py-2 rounded-pill mb-2 fw-bold"
+      >
+        <i class="fa-solid fa-layer-group me-2"></i>Modul Evaluasi Lahan
+      </div>
+      <h2 class="fw-extrabold tracking-tighter display-6 text-dark">
+        Klasifikasi Kemampuan Lahan
+      </h2>
+      <p class="text-muted mb-0">
+        Penentuan kelas berdasarkan faktor penghambat -
+        <b>Permen LH No. 17 / Arsyad</b>.
+      </p>
+    </div>
+    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+      <button
+        class="btn btn-outline-dark rounded-4 px-4 fw-bold shadow-sm"
+        data-component="home"
+      >
+        <i class="fa-solid fa-house-chimney me-2"></i>Dashboard
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 p-4 mb-4 border-start border-amber border-5"
+  >
+    <div class="row align-items-center">
+      <div class="col-md-6 text-start">
+        <label
+          class="x-small fw-bold text-uppercase text-muted mb-2 tracking-widest"
+          >Sistem Klasifikasi</label
+        >
+        <div class="fw-extrabold text-dark fs-5">
+          <i class="fa-solid fa-vial-circle-check text-amber me-2"></i>Metode
+          Faktor Penghambat
+        </div>
+      </div>
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <div
+          class="p-2 px-3 bg-amber-light rounded-4 d-inline-block text-start border border-amber border-opacity-10"
+        >
+          <span class="x-small text-amber fw-bold text-uppercase me-2"
+            >Referensi:</span
+          >
+          <span class="fw-bold text-dark small"
+            >Tabel 5.19 - Klasifikasi Kemampuan Lahan</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-5 overflow-hidden mb-5">
+    <div class="card-header bg-white border-0 pt-4 px-4 text-start">
+      <h5 class="fw-bold text-dark mb-0">Daftar Titik Pengamatan (SPL)</h5>
+    </div>
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table
+          class="table table-borderless align-middle text-center"
+          id="table-capability-master"
+        >
+          <thead
+            class="x-small fw-bold text-uppercase text-muted border-bottom"
+          >
+            <tr>
+              <th style="width: 50px"></th>
+              <th style="width: 150px" class="text-start">ID Lahan</th>
+              <th style="width: 150px">Koordinat X</th>
+              <th style="width: 150px">Koordinat Y</th>
+              <th>Keterangan</th>
+              <th style="width: 100px">Kelas</th>
+              <th style="width: 50px"></th>
+            </tr>
+          </thead>
+          <tbody id="body-capability-master">
+            <tr class="master-row border-bottom border-light">
+              <td>
+                <button
+                  class="btn btn-sm btn-light rounded-circle btn-expand-cap shadow-sm"
+                >
+                  <i class="fa-solid fa-chevron-down text-muted"></i>
+                </button>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 fw-bold land-id"
+                  value="SPL-01"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 coord-x"
+                  placeholder="X"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 coord-y"
+                  placeholder="Y"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 description"
+                  placeholder="Lokasi..."
+                />
+              </td>
+              <td>
+                <span
+                  class="badge bg-amber-light text-amber fw-bold final-class-badge"
+                  >--</span
+                >
+              </td>
+              <td>
+                <button class="btn btn-link text-danger p-0 btn-delete-row-cap">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+            <tr class="drawer-row d-none">
+              <td colspan="7" class="p-0">
+                <div
+                  class="bg-light p-4 rounded-4 m-2 shadow-inner border border-amber border-opacity-10"
+                >
+                  <div class="row g-4">
+                    <div class="col-lg-7 border-end border-white">
+                      <h6
+                        class="fw-bold text-amber x-small text-uppercase mb-3 tracking-wider"
+                      >
+                        Input Parameter Faktor Penghambat
+                      </h6>
+                      <table
+                        class="table table-sm table-borderless align-middle text-start"
+                      >
+                        <tbody class="capability-params-container"></tbody>
+                      </table>
+                    </div>
+                    <div class="col-lg-5 ps-lg-4 text-start">
+                      <h6
+                        class="fw-bold text-amber x-small text-uppercase mb-3 tracking-wider"
+                      >
+                        Hasil Klasifikasi (I - VIII)
+                      </h6>
+                      <div class="bg-white p-4 rounded-4 shadow-sm mb-3">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                          <h1
+                            class="display-4 fw-extrabold text-amber mb-0 drawer-final-class"
+                          >
+                            --
+                          </h1>
+                          <div>
+                            <div class="fw-bold text-dark drawer-final-label">
+                              Input Data
+                            </div>
+                            <div class="x-small text-danger fw-bold">
+                              Penghambat: <span class="drawer-limiter">--</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="p-3 bg-light rounded-3 border-start border-amber border-3"
+                        >
+                          <div
+                            class="x-small fw-bold text-amber text-uppercase mb-1"
+                          >
+                            Arahan Penggunaan:
+                          </div>
+                          <p
+                            class="small text-muted mb-0 drawer-recommendation"
+                          >
+                            Tentukan faktor penghambat untuk melihat rekomendasi
+                            pengelolaan.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="btn btn-amber btn-sm rounded-3 mt-3 px-4 fw-bold shadow-sm"
+        id="btn-add-plot-cap"
+      >
+        <i class="fa-solid fa-plus me-2"></i>Tambah Titik SPL
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 p-5 bg-dark text-white mb-5 text-start"
+  >
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h4 class="fw-bold text-amber mb-4">
+          <i class="fa-solid fa-shield-halved me-3"></i>Logika Penggolongan
+          Lahan
+        </h4>
+        <p class="small text-white-50">
+          Sesuai <b>Tabel 5.19</b>, penggolongan ditentukan oleh intensitas
+          faktor penghambat. Kelas I adalah lahan dengan hambatan paling ringan,
+          sementara Kelas VIII memiliki hambatan terberat.
+        </p>
+        <div
+          class="bg-secondary bg-opacity-25 p-3 rounded-4 text-center d-inline-block px-5"
+        >
+          <div class="text-amber fw-bold small mb-1">Formula Klasifikasi:</div>
+          <div class="fs-5">$$Class_{SPL} = \max(f_1, f_2, ..., f_n)$$</div>
+          <p class="x-small text-white-50 mt-1 mb-0">
+            *Parameter dengan kelas tertinggi (I < VIII) menjadi penentu utama.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-5 mt-4 mt-md-0">
+        <div class="row g-2">
+          <div class="col-6">
+            <div
+              class="x-small p-2 rounded-3 border border-white border-opacity-10 text-center"
+            >
+              <span class="text-success d-block fw-bold fs-6">I - IV</span>
+              Lahan Budidaya
+            </div>
+          </div>
+          <div class="col-6">
+            <div
+              class="x-small p-2 rounded-3 border border-white border-opacity-10 text-center"
+            >
+              <span class="text-warning d-block fw-bold fs-6">V</span> Hambatan
+              Khusus
+            </div>
+          </div>
+          <div class="col-6">
+            <div
+              class="x-small p-2 rounded-3 border border-white border-opacity-10 text-center"
+            >
+              <span class="text-orange d-block fw-bold fs-6">VI - VII</span>
+              Tanaman Tahunan
+            </div>
+          </div>
+          <div class="col-6">
+            <div
+              class="x-small p-2 rounded-3 border border-white border-opacity-10 text-center"
+            >
+              <span class="text-danger d-block fw-bold fs-6">VIII</span> Kawasan
+              Lindung
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center gap-3 mb-5 pb-5">
+    <div id="reset-default-state-cap" class="d-flex gap-3">
+      <button
+        class="btn btn-outline-secondary btn-lg rounded-4 px-5 fw-bold"
+        id="btn-trigger-reset-cap"
+      >
+        Reset Data
+      </button>
+      <button
+        class="btn btn-dark btn-lg rounded-4 px-5 fw-bold shadow-lg"
+        id="btn-export-csv-capability"
+      >
+        Export CSV <i class="fa-solid fa-file-csv ms-2"></i>
+      </button>
+    </div>
+
+    <div
+      id="reset-confirm-state-cap"
+      class="d-none animate__animated animate__headShake bg-danger bg-opacity-10 p-2 rounded-4 border border-danger border-opacity-25 d-flex align-items-center gap-2"
+    >
+      <span class="x-small fw-bold text-danger px-3"
+        ><i class="fa-solid fa-triangle-exclamation me-2"></i>Hapus semua data
+        SPL?</span
+      >
+      <button
+        class="btn btn-danger rounded-3 fw-bold px-4 btn-sm py-2"
+        id="btn-final-reset-cap"
+      >
+        Ya, Reset
+      </button>
+      <button
+        class="btn btn-light rounded-3 fw-bold px-4 btn-sm py-2 border"
+        id="btn-cancel-reset-cap"
+      >
+        Batal
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --amber-color: #f59e0b;
+    --amber-light: rgba(245, 158, 11, 0.1);
+  }
+  .text-amber {
+    color: var(--amber-color) !important;
+  }
+  .bg-amber-light {
+    background-color: var(--amber-light) !important;
+  }
+  .border-amber {
+    border-color: var(--amber-color) !important;
+  }
+  .btn-amber {
+    background-color: var(--amber-color);
+    color: white;
+    border: none;
+  }
+  .btn-amber:hover {
+    background-color: #d97706;
+    color: white;
+  }
+
+  .rounded-5 {
+    border-radius: 2rem !important;
+  }
+  .x-small {
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+  .shadow-inner {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  }
+  .text-orange {
+    color: #f97316 !important;
+  }
+
+  input.form-control-sm,
+  select.form-select-sm {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .land-id {
+    text-align: left !important;
+  }
+
+  .status-badge-sm {
+    min-width: 40px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+  }
+</style>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LONTARA-USLE | Universal Watershed Analytics</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/images/favicon.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <aside class="sidebar no-print">
+        <div class="sidebar-header">
+          <div class="logo"><i class="fas fa-seedling"></i></div>
+          <div class="brand">
+            <h1>LONTARA-USLE</h1>
+            <span>Universal Watershed System</span>
+          </div>
+        </div>
+
+        <div class="sidebar-content">
+          <p class="section-label">1. TENTUKAN WILAYAH</p>
+          <div class="info-alert">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Gunakan toolbar gambar di peta untuk menentukan area
+              analisis.</span
+            >
+          </div>
+
+          <p class="section-label">2. DATASET & PARAMETER</p>
+
+          <div class="input-card">
+            <label>Erosivitas Hujan (R)</label>
+            <select id="select_r">
+              <option value="chirps_v3">
+                CHIRPS v3 Daily (Near-Real-Time)
+              </option>
+            </select>
+            <small>Source: UCSB-CHC/CHIRPS/V3</small>
+          </div>
+
+          <div class="input-card">
+            <label>Erodibilitas Tanah (K)</label>
+            <select id="select_k">
+              <option value="openlandmap">OpenLandMap Soil Texture</option>
+            </select>
+            <small>Source: OpenLandMap/SOL</small>
+          </div>
+
+          <div class="input-card">
+            <label>Topografi (LS)</label>
+            <select id="select_ls">
+              <option value="srtm_30m">SRTM 30m (Stable USGS)</option>
+            </select>
+            <small>Source: USGS/SRTMGL1_003</small>
+          </div>
+
+          <div class="input-card">
+            <label>Tutupan Lahan (C)</label>
+            <select id="select_c">
+              <option value="esa_10m">ESA WorldCover 10m</option>
+            </select>
+            <small>Source: ESA/WorldCover/v200</small>
+          </div>
+
+          <div class="input-card highlight">
+            <label>Tahun & Visualisasi</label>
+            <input
+              type="number"
+              id="yearInput"
+              value="2024"
+              style="margin-bottom: 10px"
+            />
+            <select id="factorSelect">
+              <option value="r">Faktor R (Hujan)</option>
+              <option value="k">Faktor K (Tanah)</option>
+              <option value="ls">Faktor LS (Topografi)</option>
+              <option value="c">Faktor C (Vegetasi)</option>
+              <option value="a">Erosi Total (A = R·K·LS·C)</option>
+            </select>
+          </div>
+
+          <button id="btnRun" class="run-btn" onclick="runAnalysis()">
+            <i class="fas fa-play"></i> JALANKAN ANALISIS
+          </button>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="author-card">
+            <strong>Fajar Nugraha</strong>
+            <span>Master of Soil Science</span>
+            <p>IPB University & Universitas Hasanuddin</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="map-container">
+        <div id="map"></div>
+
+        <div class="print-header only-print">
+          <h2>LAPORAN ANALISIS EROSI TANAH (USLE)</h2>
+          <p>
+            Sistem Analisis Lontara - Dicetak pada: <span id="printDate"></span>
+          </p>
+        </div>
+
+        <div
+          class="layer-control-trigger no-print"
+          onclick="toggleBasemapGallery()"
+        >
+          <i class="fas fa-layer-group"></i>
+        </div>
+
+        <div
+          id="basemapGallery"
+          class="basemap-gallery no-print"
+          style="display: none"
+        >
+          <div
+            class="basemap-item active"
+            onclick="changeBasemap('satellite', this)"
+          >
+            <div class="thumb satellite"></div>
+            <span>Satellite</span>
+          </div>
+          <div class="basemap-item" onclick="changeBasemap('street', this)">
+            <div class="thumb street"></div>
+            <span>Street</span>
+          </div>
+          <div class="basemap-item" onclick="changeBasemap('terrain', this)">
+            <div class="thumb terrain"></div>
+            <span>Terrain</span>
+          </div>
+        </div>
+
+        <div
+          id="infoBox"
+          class="floating-panel info-panel"
+          style="display: none"
+        >
+          <div class="panel-header">
+            <h4><i class="fas fa-chart-line"></i> Statistik Wilayah</h4>
+          </div>
+          <div class="panel-body">
+            <div class="stat-row">
+              <span>Status:</span> <strong id="statStatus">Terproses</strong>
+            </div>
+            <div class="stat-row">
+              <span>Nilai Min:</span> <strong id="valMin">-</strong>
+            </div>
+            <div class="stat-row">
+              <span>Nilai Max:</span> <strong id="valMax">-</strong>
+            </div>
+            <div class="stat-row highlight-text">
+              <span>Klasifikasi:</span> <strong id="valClass">-</strong>
+            </div>
+            <button class="pdf-btn no-print" onclick="window.print()">
+              <i class="fas fa-file-pdf"></i> Cetak PDF
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="legendBox"
+          class="floating-panel legend-panel"
+          style="display: none"
+        >
+          <h4 id="legendTitle">Legenda</h4>
+          <div id="colorRamp" class="legend-gradient"></div>
+          <div class="legend-labels">
+            <span>Rendah</span><span>Tinggi</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

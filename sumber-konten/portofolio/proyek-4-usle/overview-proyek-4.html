@@ -1,0 +1,324 @@
+<style>
+  /* --- Showcase Styles Proyek 4 --- */
+  .hero-product {
+    padding: 100px 0 60px;
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .breadcrumb-back {
+    background-color: #123b3a !important;
+    color: white !important;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s ease;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(18, 59, 58, 0.2);
+  }
+
+  .breadcrumb-back:hover {
+    background-color: var(--accent) !important;
+    transform: translateY(-2px);
+  }
+
+  .konservasi-badge {
+    display: inline-block;
+    background: rgba(0, 184, 169, 0.1);
+    color: var(--accent);
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+
+  .tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  .tech-item {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #123b3a;
+    box-shadow: var(--shadow-sm);
+    transition: 0.3s;
+  }
+
+  .methodology-box {
+    background: white;
+    padding: 45px;
+    border-radius: 20px;
+    border-left: 6px solid var(--accent);
+    box-shadow: var(--shadow-md);
+    margin-top: 10px;
+  }
+
+  .app-display-window {
+    margin-top: 60px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    height: 750px;
+    background: white;
+  }
+
+  .app-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .app-display-window {
+      height: 500px;
+    }
+  }
+</style>
+
+<main>
+  <section class="hero-product">
+    <div class="container">
+      <a
+        href="sumber-konten/portofolio/portofolio.html"
+        class="nav-link-ajax breadcrumb-back"
+      >
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio
+      </a>
+      <br />
+      <div class="konservasi-badge reveal-init">Soil & Water Conservation</div>
+
+      <h1
+        class="reveal-init"
+        style="
+          font-size: 3.5rem;
+          color: #123b3a;
+          font-weight: 800;
+          margin-bottom: 20px;
+          line-height: 1.1;
+        "
+      >
+        LONTARA-USLE:<br />Pemodelan Erosi Digital
+      </h1>
+      <p
+        class="reveal-init"
+        style="
+          max-width: 800px;
+          margin: 0 auto 40px;
+          color: #64748b;
+          font-size: 1.25rem;
+          line-height: 1.8;
+        "
+      >
+        Otomasi perhitungan laju kehilangan tanah tahunan ($A = R \cdot K \cdot
+        LS \cdot C$) berbasis <b>Cloud Computing</b> untuk analisis kerentanan
+        lahan di wilayah Sub-DAS Tanralili secara instan.
+      </p>
+
+      <div
+        style="
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+        "
+      >
+        <a
+          href="sumber-konten/portofolio/proyek-4-usle/index.html"
+          target="_blank"
+          class="btn-full-custom"
+          style="
+            background-color: #123b3a !important;
+            color: white !important;
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid #123b3a;
+          "
+        >
+          Buka Layar Penuh
+        </a>
+        <a
+          href="#demo"
+          class="btn-secondary"
+          style="
+            padding: 16px 36px;
+            border-radius: 14px;
+            border: 2px solid #123b3a;
+            color: #123b3a !important;
+            background: transparent !important;
+            text-decoration: none;
+            font-weight: 700;
+          "
+        >
+          Lihat Demo Interaktif
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="centered-content">
+        <div class="reveal-init">
+          <h2 class="section-title" style="margin-bottom: 25px">
+            Inovasi Konservasi Tanah
+          </h2>
+          <p style="color: #64748b; line-height: 1.8; margin-bottom: 20px">
+            Sebagai bentuk dedikasi dalam studi pascasarjana di
+            <b>IPB University</b> dan <b>Universitas Hasanuddin</b>, saya
+            mengembangkan platform <b>LONTARA-USLE</b> untuk mendigitalisasi
+            persamaan <i>Universal Soil Loss Equation</i> (USLE).
+          </p>
+          <p style="color: #64748b; line-height: 1.8">
+            Sistem ini mengintegrasikan data curah hujan <b>CHIRPS</b>, tekstur
+            tanah <b>OpenLandMap</b>, topografi <b>SRTM 30m</b>, dan tutupan
+            lahan <b>ESA WorldCover</b> melalui <b>Google Earth Engine API</b>.
+            Hasilnya adalah visualisasi spasial kerentanan erosi yang akurat
+            tanpa pengolahan data manual yang rumit.
+          </p>
+
+          <div class="tech-stack-grid">
+            <div class="tech-item">Node.js API</div>
+            <div class="tech-item">GEE Cloud</div>
+            <div class="tech-item">Leaflet.js</div>
+            <div class="tech-item">USLE Model</div>
+            <div class="tech-item">Remote Sensing</div>
+          </div>
+        </div>
+
+        <div class="methodology-box reveal-init">
+          <h3 style="color: #123b3a; margin-bottom: 25px; font-size: 1.5rem">
+            Fitur Unggulan LONTARA-USLE
+          </h3>
+          <ul
+            style="
+              list-style: none;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <li style="display: flex; gap: 15px">
+              <span
+                style="
+                  color: var(--accent);
+                  font-weight: 900;
+                  font-size: 1.1rem;
+                "
+                >01.</span
+              >
+              <span
+                ><b>Dynamic USLE Calculation:</b> Perhitungan otomatis lima
+                faktor erosi ($R, K, LS, C$) berdasarkan poligon wilayah pilihan
+                pengguna.</span
+              >
+            </li>
+            <li style="display: flex; gap: 15px">
+              <span
+                style="
+                  color: var(--accent);
+                  font-weight: 900;
+                  font-size: 1.1rem;
+                "
+                >02.</span
+              >
+              <span
+                ><b>Identify Tool:</b> Memungkinkan pengguna mendapatkan nilai
+                piksel spesifik pada peta dengan satu kali klik.</span
+              >
+            </li>
+            <li style="display: flex; gap: 15px">
+              <span
+                style="
+                  color: var(--accent);
+                  font-weight: 900;
+                  font-size: 1.1rem;
+                "
+                >03.</span
+              >
+              <span
+                ><b>PDF Reporting:</b> Fasilitas pencetakan laporan statistik
+                wilayah (Min/Max erosi) untuk kebutuhan dokumentasi
+                teknis.</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="demo" class="reveal-init" style="margin-top: 100px">
+        <h2 class="section-title">Aplikasi WebGIS USLE Interaktif</h2>
+        <div class="app-display-window">
+          <iframe
+            src="sumber-konten/portofolio/proyek-4-usle/index.html"
+            class="app-iframe"
+            title="LONTARA-USLE Engine Demo"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section"
+    style="
+      background-color: #123b3a;
+      color: white;
+      text-align: center;
+      padding: 100px 0;
+    "
+  >
+    <div class="container">
+      <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: white">
+        Butuh Pemodelan Geospasial Presisi?
+      </h2>
+      <p
+        style="
+          font-size: 1.2rem;
+          opacity: 0.9;
+          max-width: 700px;
+          margin: 0 auto 40px;
+        "
+      >
+        Hubungi Lontara untuk solusi analisis hidrologi, konservasi lahan, dan
+        otomasi <i>Cloud GIS</i> berbasis data satelit terkini.
+      </p>
+      <a
+        href="sumber-konten/kontak/kontak.html"
+        class="nav-link-ajax"
+        style="
+          background-color: white !important;
+          color: #123b3a !important;
+          padding: 18px 45px;
+          border-radius: 12px;
+          font-weight: 800;
+          display: inline-block;
+          text-decoration: none;
+        "
+      >
+        Jadwalkan Konsultasi Teknis
+      </a>
+    </div>
+  </section>
+</main>
