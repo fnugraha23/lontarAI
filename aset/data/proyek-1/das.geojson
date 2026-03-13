@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "DAS Contoh",
+        "luas": 28000
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [110, -7],
+            [111, -7],
+            [111, -6],
+            [110, -6],
+            [110, -7]
+          ]
+        ]
+      }
+    }
+  ]
+}

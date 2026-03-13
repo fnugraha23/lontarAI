@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "kelas_lahan": "Hutan",
+        "luas": 1250.5,
+        "koefisien_limpasan": 0.15,
+        "p_kelerengan": 65,
+        "p_hujan": 80,
+        "p_tanah": 45,
+        "p_vegetasi": 90,
+        "p_manusia": 10
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [119.5, -5.12],
+            [119.54, -5.12],
+            [119.54, -5.15],
+            [119.5, -5.15],
+            [119.5, -5.12]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "kelas_lahan": "Pertanian Campuran",
+        "luas": 850.2,
+        "koefisien_limpasan": 0.35,
+        "p_kelerengan": 40,
+        "p_hujan": 75,
+        "p_tanah": 55,
+        "p_vegetasi": 50,
+        "p_manusia": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [119.54, -5.12],
+            [119.58, -5.12],
+            [119.58, -5.15],
+            [119.54, -5.15],
+            [119.54, -5.12]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "kelas_lahan": "Pemukiman",
+        "luas": 320.8,
+        "koefisien_limpasan": 0.85,
+        "p_kelerengan": 10,
+        "p_hujan": 70,
+        "p_tanah": 80,
+        "p_vegetasi": 15,
+        "p_manusia": 95
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [119.5, -5.15],
+            [119.54, -5.15],
+            [119.54, -5.18],
+            [119.5, -5.18],
+            [119.5, -5.15]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "kelas_lahan": "Sawah",
+        "luas": 540.0,
+        "koefisien_limpasan": 0.25,
+        "p_kelerengan": 5,
+        "p_hujan": 75,
+        "p_tanah": 60,
+        "p_vegetasi": 40,
+        "p_manusia": 70
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [119.54, -5.15],
+            [119.58, -5.15],
+            [119.58, -5.18],
+            [119.54, -5.18],
+            [119.54, -5.15]
+          ]
+        ]
+      }
+    }
+  ]
+}

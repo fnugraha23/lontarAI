@@ -1,0 +1,35 @@
+{
+  "informasi_das": {
+    "nama_sub_das": "Tanralili",
+    "luas_total_ha": 2961.5,
+    "stasiun_pengamatan": "Outlet Utama"
+  },
+  "parameter_hidrologi": [
+    {
+      "parameter": "Koefisien Limpasan Rata-rata (C)",
+      "nilai_aktual": 0.45,
+      "prediksi_arahan": 0.32,
+      "status_aktual": "Sedang",
+      "rekomendasi": "Peningkatan vegetasi di area kelerengan > 15%"
+    },
+    {
+      "parameter": "Laju Erosi (ton/ha/thn)",
+      "nilai_aktual": 24.5,
+      "prediksi_arahan": 12.1,
+      "status_aktual": "Tinggi",
+      "rekomendasi": "Penerapan terasering pada pertanian lahan kering"
+    },
+    {
+      "parameter": "Debit Puncak (m3/detik)",
+      "nilai_aktual": 115.8,
+      "prediksi_arahan": 85.4,
+      "status_aktual": "Kritis",
+      "rekomendasi": "Restorasi kawasan sempadan sungai"
+    }
+  ],
+  "metrik_akurasi_model": {
+    "algoritma": "Random Forest",
+    "akurasi_klasifikasi": "92.4%",
+    "kappa_index": 0.89
+  }
+}
