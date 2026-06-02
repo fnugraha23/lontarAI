@@ -1,0 +1,173 @@
+/* ==========================================================================
+   LONTARA TECH — CART & AUTH STYLES
+   Lokasi: css/cart.css
+   Fungsi: Gaya khusus untuk Navbar Cart Badge, Layout Keranjang, & Checkout
+   ========================================================================== */
+
+/* --- 1. NAVBAR CART BADGE (Indikator Angka) --- */
+#cart-icon {
+  position: relative; /* Wajib agar badge tidak lari dari ikon keranjang */
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #ef4444; /* Merah cerah agar mengundang klik */
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 10px; /* Bentuk pil jika angkanya puluhan */
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+  /* Default disembunyikan oleh cart.js jika isi 0 */
+}
+
+/* Modifikasi Ikon Auth di Navbar agar rapi saat menampilkan Foto Profil */
+#auth-btn {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#auth-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-soft);
+}
+
+/* --- 2. LAYOUT HALAMAN KERANJANG (Grid 2 Kolom) --- */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr; /* Kolom kiri lebih besar untuk list barang */
+  gap: 3rem;
+  align-items: start;
+}
+
+/* --- 3. DAFTAR BARANG (Cart Items) --- */
+.cart-item {
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-item:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateX(5px); /* Efek geser halus saat di-hover */
+}
+
+/* Tombol + dan - di dalam keranjang */
+.cart-qty-minus,
+.cart-qty-plus {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cart-qty-minus:hover,
+.cart-qty-plus:hover {
+  background-color: var(--border) !important;
+  color: var(--primary) !important;
+}
+
+/* Tombol Hapus (Tong Sampah) */
+.cart-item-remove {
+  transition: transform 0.2s ease, color 0.2s ease;
+  opacity: 0.7;
+}
+
+.cart-item-remove:hover {
+  opacity: 1;
+  transform: scale(1.15) rotate(5deg); /* Efek goyang sedikit saat mau dihapus */
+  color: #dc2626 !important; /* Merah lebih gelap */
+}
+
+/* --- 4. KOTAK RINGKASAN CHECKOUT (Sticky Sidebar) --- */
+#cart-summary-container {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  
+  /* Efek Sticky: Kotak ini akan mengambang ikut ke bawah saat user men-scroll list barang */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px; /* Jarak dari atas layar (menghindari navbar) */
+  z-index: 10;
+}
+
+.cart-summary-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cart-summary-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.cart-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--border);
+  font-weight: 800;
+  color: var(--text-main);
+  font-size: 1.3rem;
+}
+
+#cart-total-price {
+  color: var(--primary);
+  font-size: 1.6rem;
+}
+
+/* --- 5. RESPONSIVE DESIGN (Tampilan HP) --- */
+@media (max-width: 992px) {
+  .cart-layout {
+    grid-template-columns: 1fr; /* Berubah jadi 1 kolom bertumpuk */
+    gap: 2rem;
+  }
+
+  #cart-summary-container {
+    position: relative; /* Matikan efek sticky di HP */
+    top: 0;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Penyesuaian list barang di layar sangat kecil (HP Vertikal) */
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+  
+  .cart-item > div:last-child {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

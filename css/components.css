@@ -1,0 +1,333 @@
+/* ==========================================================================
+   LONTARA TECH — UI COMPONENTS
+   Lokasi: css/components.css
+   Fungsi: Grid, Kartu, Tombol Premium, Form, & Elemen SPA (Progress Bar)
+   ========================================================================== */
+
+/* --- 1. FIXED GRID SYSTEM (Anti-Hancur) --- */
+/* Kunci: !important memastikan struktur dasar tidak diubah oleh script dinamis */
+.grid-4 {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem;
+}
+
+.grid-2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2.5rem;
+}
+
+/* Responsivitas Grid */
+@media (max-width: 1024px) {
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Turun ke 1 kolom hanya di layar HP */
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 2. SIGNATURE CARD SYSTEM --- */
+.card-form {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Ikon Lontara: Animasi Miring & Membesar (The Signature Move) */
+.card-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card:hover .card-icon {
+  background-color: var(--accent);
+  color: #ffffff;
+  /* !important memastikan animasi khas ini selalu jalan saat di-hover */
+  transform: rotate(-15deg) scale(1.2) !important;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- 3. PREMIUM BUTTON SYSTEM --- */
+.btn-primary,
+.btn-secondary,
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0.9rem 2.2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none !important;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tombol Dark (Solusi teks hilang / kontras rendah) */
+.btn-dark {
+  background-color: #1e293b;
+  color: #ffffff !important;
+}
+
+.btn-dark:hover {
+  background-color: #0f172a;
+  color: var(--text-white) !important; /* Teks berubah Teal agar menyala */
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol Primary (Hijau Lontara) */
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff !important;
+}
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(27, 67, 50, 0.2);
+}
+
+/* Tombol Secondary (Garis Pinggir) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary) !important;
+  border-color: var(--primary);
+}
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
+
+/* --- 4. FORM ELEMENTS (Persiapan untuk Kontak) --- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+.form-control {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* --- 5. SPA TOOLS (Progress Bar & Loader) --- */
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: var(--z-progress);
+  pointer-events: none;
+  background: transparent;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.loader-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  width: 100%;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 6. ANIMASI INTERAKTIF (Scroll Reveal & Ripple) --- */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ripple-effect {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   7. SLIDER THUMBNAIL COMPONENT (1x1)
+   Digunakan di Layanan, Portofolio, dll.
+   ========================================================================== */
+
+.card-slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Memaksa rasio kotak 1x1 */
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  background-color: var(--border);
+}
+
+.card-slider-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-slider-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Tombol Navigasi Manual Slider */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.slider-btn:hover {
+  background: var(--primary);
+}
+
+.card-slider-container:hover .slider-btn {
+  opacity: 1; /* Muncul saat kursor diarahkan ke gambar */
+}
+
+.slider-prev { left: 10px; }
+.slider-next { right: 10px; }

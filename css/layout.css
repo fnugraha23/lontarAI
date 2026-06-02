@@ -1,0 +1,316 @@
+/* ==========================================================================
+   LONTARA TECH — LAYOUT ENGINE
+   Lokasi: css/layout.css
+   Fungsi: Struktur Navigasi, Header, Footer, & Tata Letak Dasar SPA
+   ========================================================================== */
+
+/* --- 1. GLOBAL WRAPPERS --- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem; /* Ruang napas kiri-kanan agar tidak mepet layar */
+  width: 100%;
+}
+
+/* Area Injeksi Konten SPA */
+#render-konten {
+  flex: 1;
+  padding-top: var(--header-height); /* Mencegah konten tertusuk navbar */
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  /* Animasi masuk setiap kali halaman baru dimuat oleh app-shell */
+  animation: fadeInSPA 0.4s ease-in-out;
+}
+
+@keyframes fadeInSPA {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- 2. HEADER ARCHITECTURE (Glassmorphism) --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-bottom: 1px solid var(--border);
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+/* State saat di-scroll ke bawah (Shrink Mode) */
+.header.shrink {
+  height: 70px;
+  background: var(--bg-light);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga Logo di kiri, Menu di kanan */
+  width: 100%;
+}
+
+/* --- 3. DESKTOP NAVIGATION --- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem; /* Jarak lega antar kelompok navigasi */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  text-decoration: none !important;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+
+  /* FIX: Memastikan teks menu (seperti "Aset Digital") sejajar 1 baris */
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Active & Hover Logic */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent) !important;
+}
+
+/* SISTEM UNDERLINE: Garis bawah elegan untuk menu aktif */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a.active::after {
+  width: 100%; /* Tetap menyala berkat sinkronisasi main.js */
+}
+
+/* --- 4. CONTROLS (SEARCH, THEME, & CTA) --- */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border); /* Pemisah visual yang tegas */
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-btn:hover {
+  transform: rotate(15deg) scale(1.1);
+  color: var(--accent);
+}
+
+/* Search Engine Interaction */
+#search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px 35px 8px 15px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-main);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  width: 160px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.search-input:focus {
+  width: 220px; /* Melebar saat diklik */
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.search-submit {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* TOMBOL KONTAK (CTA UTAMA NAVBAR) */
+.nav-cta {
+  background-color: var(--primary) !important;
+  color: white !important;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-sm, 10px);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Biar tombolnya gak gepeng */
+}
+
+.nav-cta:hover {
+  background-color: var(--accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px var(--accent-soft);
+}
+
+/* --- 5. MOBILE NAVIGATION ENGINE --- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-mobile-nav);
+}
+
+.nav-toggle span {
+  width: 28px;
+  height: 2px;
+  background: var(--text-main);
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animasi Burger ke X */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  z-index: var(--z-overlay);
+  transition: all 0.4s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 1024px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100vh;
+    background: var(--bg-light);
+    flex-direction: column;
+    padding: 100px 2rem;
+    gap: 2.5rem;
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.1);
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav.active {
+    right: 0;
+  }
+
+  .nav-links,
+  .nav-controls {
+    flex-direction: column;
+    width: 100%;
+    border: none;
+    padding: 0;
+    align-items: center;
+  }
+  .nav-links {
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    font-size: 1.25rem;
+  }
+}
+
+/* --- 6. FOOTER ENGINE --- */
+.footer {
+  background-color: var(--bg-light);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 2rem;
+  margin-top: auto;
+}
+
+.footer-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+.footer-copyright p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .footer-split {
+    flex-direction: column;
+    text-align: center;
+  }
+}

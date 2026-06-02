@@ -1,0 +1,150 @@
+/* ==========================================================================
+   LONTARA TECH — THEME & GLOBAL VARIABLES
+   Lokasi: css/theme.css
+   Fungsi: Identitas Brand, Mode Gelap/Terang, dan Reset Global SPA
+   ========================================================================== */
+
+:root {
+  /* --- 1. BRAND COLORS (Environmental Intelligence) --- */
+  --primary: #1b4332; /* Forest Green - Warna Utama */
+  --primary-light: #00b8a9; /* Hijau Daun - Untuk Hover */
+  --accent: #1b4332; /* Tech Teal - Warna Aksen/Teknologi */
+  --accent-soft: rgba(0, 184, 169, 0.12);
+  --accent-glow: rgba(0, 184, 169, 0.4);
+
+  /* --- 2. LIGHT MODE PALETTE (Default) --- */
+  --bg-main: #f8fafc; /* Slate 50 - Latar Belakang Utama */
+  --bg-light: #ffffff; /* Pure White - Latar Kartu & Header */
+  --bg-glass: rgba(255, 255, 255, 0.85); /* Efek Kaca */
+
+  --text-main: #0f172a; /* Slate 900 - Teks Utama (Sangat Kontras) */
+  --text-muted: #64748b; /* Slate 500 - Teks Sekunder/Paragraf */
+  --text-light: #f1f5f9; /* Slate 100 - Teks di atas warna gelap */
+  --text-white: #ffffff;
+
+  --border: #e2e8f0; /* Slate 200 - Garis pembatas ringan */
+
+  /* --- 3. SHADOWS & RADIUS --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  --radius: 20px; /* Radius untuk Kartu & Gambar */
+  --radius-sm: 10px; /* Radius untuk Tombol & Input */
+
+  /* --- 4. UTILITIES & Z-INDEX (Mencegah Tabrakan Elemen) --- */
+  --header-height: 85px;
+  --container: 1240px;
+  --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --blur: blur(12px);
+
+  --z-overlay: 990;
+  --z-header: 1000;
+  --z-mobile-nav: 1010;
+  --z-progress: 11000;
+}
+
+/* --- 5. DARK MODE OVERRIDE --- */
+/* Aktif ketika class .dark-theme ditambahkan ke tag <body> via JS */
+body.dark-theme {
+  /* --- 1. BRAND COLORS (Environmental Intelligence) --- */
+  --primary: #00b8a9; /* Forest Green - Warna Utama */
+  --primary-light: #1b4332; /* Hijau Daun - Untuk Hover */
+  --accent: #00b8a9; /* Tech Teal - Warna Aksen/Teknologi */
+  --bg-main: #020617; /* Slate 950 - Latar Pekat Mode Gelap */
+  --bg-light: #0f172a; /* Slate 900 - Latar Kartu Mode Gelap */
+  --bg-glass: rgba(2, 6, 23, 0.85);
+
+  --text-main: #f8fafc; /* Slate 50 - Teks Utama Terang */
+  --text-muted: #94a3b8; /* Slate 400 - Teks Sekunder Terang */
+
+  --border: #1e293b; /* Slate 800 - Garis pembatas gelap */
+  --accent-soft: rgba(0, 184, 169, 0.2);
+}
+
+/* ==========================================================================
+   GLOBAL RESET & TYPOGRAPHY
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* CRITICAL FIX SPA: Memastikan perpindahan halaman langsung lompat ke atas tanpa animasi nyangkut */
+  scroll-behavior: auto !important;
+  font-size: 16px;
+  /* Mencegah layout bergeser saat scrollbar muncul/hilang */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: "Manrope", "Plus Jakarta Sans", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease; /* Transisi halus saat ganti tema */
+}
+
+/* --- TYPOGRAPHY SYSTEM --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-main);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em; /* Kesan modern dan padat */
+  margin-bottom: 1rem;
+  transition: color 0.4s ease;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* --- TEXT SELECTION --- */
+::selection {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* --- CUSTOM SCROLLBAR (Menyesuaikan Tema) --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+  border: 3px solid var(--bg-main); /* Memberikan efek padding di dalam track */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* --- UTILITY CLASSES GLOBALS --- */
+.text-accent {
+  color: var(--accent) !important;
+}
+.bg-accent {
+  background-color: var(--accent) !important;
+}
+.text-center {
+  text-align: center;
+}

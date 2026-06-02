@@ -1,0 +1,221 @@
+/* ==========================================================================
+   LONTARA TECH — MAIN / HOMEPAGE STYLES
+   Lokasi: css/main.css
+   Fungsi: Gaya khusus untuk Hero Section, WebGIS Container, dan CTA
+   ========================================================================== */
+
+/* --- 1. HERO SECTION (Kesan Pertama) --- */
+.hero {
+  /* Padding atas besar agar tidak tertutup header */
+  padding: clamp(140px, 20vh, 180px) 0 100px;
+  background-color: var(--bg-main);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 85vh;
+  text-align: center;
+}
+
+/* Pola Grid Spasial di Background Hero (Identitas Intelejen Lahan) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--accent-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  /* Membuat efek fade out berbentuk lingkaran di tengah */
+  mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 20%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+/* Mode Gelap Khusus Teks Hero */
+body.dark-theme .hero h1 {
+  color: var(--text-main);
+}
+
+.hero p {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* --- 2. GLOBAL SECTION UTILITIES --- */
+.section {
+  padding: 100px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+body.dark-theme .section-title {
+  color: var(--accent); /* Judul seksi berwarna teal di mode gelap */
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* --- 3. WEBGIS PREVIEW SECTION --- */
+.webgis-section {
+  background-color: var(
+    --bg-light
+  ); /* Beda warna dengan Hero agar terpisah jelas */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.webgis-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.webgis-container {
+  width: 100%;
+  /* Clamp memastikan WebGIS lega di desktop, tapi gak kepotong di HP */
+  height: clamp(450px, 70vh, 650px);
+  background-color: #0f172a; /* Latar gelap saat iframe sedang loading */
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.webgis-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.webgis-hint {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --- 4. CALL TO ACTION (CTA) SECTION --- */
+.cta {
+  padding: 100px 0;
+  background-color: var(--primary); /* Latar Hijau Khas Lontara */
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0; /* Melengkung di atas saja */
+  margin-top: 4rem;
+}
+
+/* Pola cahaya di background CTA */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(0, 184, 169, 0.25) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(0, 184, 169, 0.15) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta h2 {
+  color: white;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  margin-bottom: 1.5rem;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  color: #e2e8f0;
+}
+
+/* --- 5. RESPONSIVE BREAKPOINTS (Mobile) --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 130px 0 80px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .webgis-container {
+    height: 400px;
+    border-radius: var(--radius-sm);
+  }
+
+  .section,
+  .cta {
+    padding: 70px 0;
+  }
+}
