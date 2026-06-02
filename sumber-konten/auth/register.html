@@ -1,0 +1,87 @@
+<section class="section" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+  <div class="card reveal-init" style="width: 100%; max-width: 400px; padding: 40px; box-shadow: var(--shadow-md);">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h2 style="margin-bottom: 10px;">Buat Akun Baru</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Daftar untuk mulai mengelola akses dan pesanan Anda.</p>
+    </div>
+
+    <form id="register-form">
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;">Nama Lengkap</label>
+        <input type="text" id="fullname" required placeholder="Contoh: Budi Santoso" 
+               style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; outline: none;">
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;">Alamat Email</label>
+        <input type="email" id="email" required placeholder="nama@email.com" 
+               style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; outline: none;">
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;">Password</label>
+        <input type="password" id="password" required placeholder="••••••••" 
+               style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; outline: none;">
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;">Konfirmasi Password</label>
+        <input type="password" id="confirm-password" required placeholder="••••••••" 
+               style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; outline: none;">
+      </div>
+
+      <button type="submit" id="btn-register" class="btn-primary" style="width: 100%; padding: 14px; font-weight: 700; border: none; cursor: pointer;">
+        Daftar Akun
+      </button>
+
+      <div style="text-align: center; margin-top: 20px; font-size: 0.85rem;">
+        <p style="color: var(--text-muted);">Sudah punya akun? <a href="#login" class="nav-link-ajax" style="color: var(--primary); font-weight: 700;">Masuk di sini</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script type="module">
+  // Impor auth dan fungsi Firebase
+  import { auth } from "../../firebase-init.js"; 
+  import { createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+  const form = document.getElementById('register-form');
+  const btnRegister = document.getElementById('btn-register');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    
+    if (password !== confirmPassword) {
+      alert('Password tidak cocok!');
+      return;
+    }
+
+    btnRegister.innerText = "Mendaftarkan...";
+    btnRegister.disabled = true;
+
+    try {
+      // 1. Buat akun baru di Firebase
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // 2. Kirim email verifikasi
+      await sendEmailVerification(user);
+
+      alert('Pendaftaran berhasil! Silakan cek email Anda untuk verifikasi.');
+      
+      // 3. Arahkan ke login
+      window.location.hash = '#login';
+    } catch (error) {
+      console.error(error);
+      alert('Pendaftaran gagal: ' + error.message);
+      btnRegister.innerText = "Daftar Akun";
+      btnRegister.disabled = false;
+    }
+  });
+</script>

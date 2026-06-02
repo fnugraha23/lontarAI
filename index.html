@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LONTARA — Environmental & Land Intelligence Studio</title>
+
+    <link rel="icon" type="image/png" href="aset/logo/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/cart.css" /> 
+  </head>
+  
+  <body>
+    <div class="progress-bar-container">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <header class="header" id="master-header">
+      <div class="container nav-container">
+        <div class="logo">
+          <a href="#beranda" class="nav-link-ajax">
+            <img id="main-logo" src="aset/logo/logo-hitam.png" alt="LONTARA Logo" style="height: 40px; width: auto" />
+          </a>
+        </div>
+
+        <nav class="nav" id="main-nav">
+          <ul class="nav-links">
+            <li><a href="#layanan" class="nav-link-ajax">Layanan</a></li>
+            <li><a href="#portofolio" class="nav-link-ajax">Portofolio</a></li>
+            <li><a href="#artikel" class="nav-link-ajax">Artikel</a></li>
+            <li><a href="#publikasi" class="nav-link-ajax">Publikasi</a></li>
+            <li><a href="#aset-digital" class="nav-link-ajax">Aset Digital</a></li>
+            <li><a href="#tentang" class="nav-link-ajax">Tentang</a></li>
+          </ul>
+
+          <div class="nav-controls">
+            <button id="auth-btn" class="theme-btn" aria-label="Akun">
+              <i class="fa-solid fa-user"></i>
+            </button>
+            
+            <a href="#keranjang" class="nav-link-ajax theme-btn" id="cart-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count" style="display: none;">0</span>
+            </a>
+
+            <button id="theme-toggle" class="theme-btn" title="Ubah Tema" aria-label="Toggle Dark Mode">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <form id="search-form" action="#">
+              <input type="text" id="search-input" class="search-input" placeholder="Cari..." autocomplete="off" />
+              <button type="submit" class="search-submit" aria-label="Cari"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+            <a href="#kontak" class="nav-link-ajax nav-cta">Kontak</a>
+          </div>
+        </nav>
+
+        <button class="nav-toggle" id="mobile-toggle" aria-label="Buka Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <main id="render-konten">
+      <div class="loader-placeholder" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div class="spinner"></div>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-weight: 600;">
+          Memuat Lontara Engine...
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-split">
+        <div class="footer-brand">
+          <img src="aset/logo/logo-footer.png" alt="Lontara" style="height: 30px; margin-bottom: 10px; opacity: 0.8" onerror="this.style.display = 'none'" />
+          <h4 style="color: var(--primary)">Lontara</h4>
+          <p>Environmental & Land Intelligence Studio.</p>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2026 Lontara Tech. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/animasi.js"></script>
+    <script src="js/pencarian.js"></script>
+    <script type="module" src="js/app-shell.js"></script> 
+    <script src="js/main.js"></script>
+    <script src="js/form-handler.js"></script>
+    <script src="js/cart.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script type="module" src="js/auth.js"></script> 
+  </body>
+</html>

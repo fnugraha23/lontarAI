@@ -1,0 +1,397 @@
+<div class="animate__animated animate__fadeIn position-relative">
+  <div class="row align-items-center mb-5">
+    <div class="col-md-8 text-start">
+      <div
+        class="badge bg-sky-light text-sky px-3 py-2 rounded-pill mb-2 fw-bold"
+      >
+        <i class="fa-solid fa-microscope me-2"></i>Soil Physics Module
+      </div>
+      <h2 class="fw-extrabold tracking-tighter display-6 text-dark">
+        Analisis Fisika Tanah
+      </h2>
+      <p class="text-muted mb-0">
+        Manajemen data fisik terpadu - <b>DAS Tanralili</b>.
+      </p>
+    </div>
+    <div class="col-md-4 text-md-end">
+      <button
+        class="btn btn-outline-dark rounded-4 px-4 fw-bold shadow-sm"
+        data-component="home"
+      >
+        <i class="fa-solid fa-house-chimney me-2"></i>Dashboard
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 overflow-hidden mb-5 border-start border-sky border-5"
+  >
+    <div class="card-header bg-white border-0 pt-4 px-4 text-start">
+      <h5 class="fw-bold text-sky mb-3">1. BD | PD | Porositas</h5>
+      <div
+        class="d-inline-flex align-items-center bg-sky-light border border-sky border-opacity-25 p-2 px-3 rounded-4 mb-2"
+      >
+        <p class="x-small fw-bold text-sky mb-0">
+          <i class="fa-solid fa-square-root-variable me-2"></i>
+          Formula: $BD = \frac{M_{kering}}{V} \quad | \quad n = (1 -
+          \frac{BD}{PD}) \times 100\%$
+        </p>
+      </div>
+    </div>
+    <div class="card-body p-4 text-start">
+      <div class="table-responsive">
+        <table
+          class="table table-borderless align-middle text-center"
+          id="table-bd"
+        >
+          <thead
+            class="x-small fw-bold text-uppercase text-muted border-bottom"
+          >
+            <tr>
+              <th class="text-start" style="width: 150px">ID Sampel</th>
+              <th>M. Kering (g)</th>
+              <th>PD ($g/cm^3$)</th>
+              <th>Ring D (cm)</th>
+              <th>Ring H (cm)</th>
+              <th class="text-sky" style="width: 100px">BD</th>
+              <th class="text-sky" style="width: 130px">Porositas (%)</th>
+              <th style="width: 50px"></th>
+            </tr>
+          </thead>
+          <tbody id="body-bd">
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 fw-bold"
+                  value="TRL-BD-01"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0.0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  value="2.65"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  value="5.0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  value="5.0"
+                />
+              </td>
+              <td class="px-3">
+                <div
+                  class="res-area res-bd bg-sky-light py-2 rounded-3 fw-bold text-sky"
+                >
+                  --
+                </div>
+              </td>
+              <td class="px-3">
+                <div
+                  class="res-area res-n bg-sky-light py-2 rounded-3 fw-bold text-sky"
+                >
+                  --
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-link text-danger p-0 btn-delete-row shadow-none"
+                >
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="btn btn-sky btn-sm rounded-3 mt-3 px-4 fw-bold shadow-sm"
+        id="btn-add-bd"
+      >
+        <i class="fa-solid fa-plus me-2"></i>Tambah Sampel BD
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 overflow-hidden mb-5 border-start border-sky border-5"
+  >
+    <div class="card-header bg-white border-0 pt-4 px-4 text-start">
+      <h5 class="fw-bold text-sky mb-3">
+        2. Kadar Air Berat | Kadar Air Volume
+      </h5>
+      <div
+        class="d-inline-flex align-items-center bg-sky-light border border-sky border-opacity-25 p-2 px-3 rounded-4 mb-2"
+      >
+        <p class="x-small fw-bold text-sky mb-0">
+          <i class="fa-solid fa-droplet me-2"></i>
+          Formula: $w = \frac{M_{basah} - M_{kering}}{M_{kering}} \times 100\%
+          \quad | \quad \theta = w \times BD$
+        </p>
+      </div>
+    </div>
+    <div class="card-body p-4 text-start">
+      <div class="table-responsive">
+        <table
+          class="table table-borderless align-middle text-center"
+          id="table-ka"
+        >
+          <thead
+            class="x-small fw-bold text-uppercase text-muted border-bottom"
+          >
+            <tr>
+              <th class="text-start" style="width: 150px">ID Sampel</th>
+              <th>M. Basah (g)</th>
+              <th>M. Kering (g)</th>
+              <th>BD Ref*</th>
+              <th class="text-sky" style="width: 130px">KA Berat ($w\%$)</th>
+              <th class="text-sky" style="width: 130px">
+                KA Volume ($\theta\%$)
+              </th>
+              <th style="width: 50px"></th>
+            </tr>
+          </thead>
+          <tbody id="body-ka">
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 fw-bold"
+                  value="TRL-KA-01"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0.0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0.0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  value="1.25"
+                />
+              </td>
+              <td class="px-3">
+                <div
+                  class="res-area res-ka-berat bg-sky-light py-2 rounded-3 fw-bold text-sky"
+                >
+                  --
+                </div>
+              </td>
+              <td class="px-3">
+                <div
+                  class="res-area res-ka-vol bg-sky-light py-2 rounded-3 fw-bold text-sky"
+                >
+                  --
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-link text-danger p-0 btn-delete-row shadow-none"
+                >
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="btn btn-sky btn-sm rounded-3 mt-3 px-4 fw-bold shadow-sm"
+        id="btn-add-ka"
+      >
+        <i class="fa-solid fa-plus me-2"></i>Tambah Sampel KA
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 overflow-hidden mb-5 border-start border-sky border-5"
+  >
+    <div class="card-header bg-white border-0 pt-4 px-4 text-start">
+      <h5 class="fw-bold text-sky mb-3">3. Tekstur Tanah</h5>
+      <div
+        class="d-inline-flex align-items-center bg-sky-light border border-sky border-opacity-25 p-2 px-3 rounded-4 mb-2"
+      >
+        <p class="x-small fw-bold text-sky mb-0">
+          <i class="fa-solid fa-leaf me-2"></i>
+          Standar: Klasifikasi Segitiga Tekstur USDA
+        </p>
+      </div>
+    </div>
+    <div class="card-body p-4 text-start">
+      <div class="mb-4 text-center"></div>
+      <div class="table-responsive">
+        <table
+          class="table table-borderless align-middle text-center"
+          id="table-tekstur"
+        >
+          <thead
+            class="x-small fw-bold text-uppercase text-muted border-bottom"
+          >
+            <tr>
+              <th class="text-start" style="width: 150px">ID Sampel</th>
+              <th>Sand (%)</th>
+              <th>Silt (%)</th>
+              <th>Clay (%)</th>
+              <th class="text-sky" style="width: 250px">Hasil Klasifikasi</th>
+              <th style="width: 50px"></th>
+            </tr>
+          </thead>
+          <tbody id="body-tekstur">
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 fw-bold"
+                  value="TRL-T-01"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-control form-control-sm border-0 bg-light rounded-3"
+                  placeholder="0"
+                />
+              </td>
+              <td class="px-2">
+                <div
+                  class="res-area res-tekstur bg-sky-light p-2 rounded-3 fw-bold text-sky"
+                >
+                  --
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-link text-danger p-0 btn-delete-row shadow-none"
+                >
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="btn btn-sky btn-sm rounded-3 mt-3 px-4 fw-bold shadow-sm"
+        id="btn-add-tekstur"
+      >
+        <i class="fa-solid fa-plus me-2"></i>Tambah Sampel Tekstur
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center gap-3 mb-5 pb-5">
+    <div id="reset-default-state" class="d-flex gap-3">
+      <button
+        class="btn btn-outline-secondary btn-lg rounded-4 px-5 fw-bold shadow-sm"
+        id="btn-trigger-reset-ui"
+      >
+        Reset Data
+      </button>
+      <button
+        class="btn btn-dark btn-lg rounded-4 px-5 fw-bold shadow"
+        id="btn-export-physics"
+      >
+        Simpan & Export Master <i class="fa-solid fa-file-csv ms-2"></i>
+      </button>
+    </div>
+
+    <div
+      id="reset-confirm-state"
+      class="d-none animate__animated animate__headShake bg-danger bg-opacity-10 p-2 rounded-4 border border-danger border-opacity-25 d-flex align-items-center gap-2"
+    >
+      <span class="x-small fw-bold text-danger px-3"
+        ><i class="fa-solid fa-circle-exclamation me-2"></i>Hapus data
+        permanen?</span
+      >
+      <button
+        class="btn btn-danger rounded-3 fw-bold px-4 btn-sm py-2"
+        id="btn-final-reset-execute"
+      >
+        Ya, Hapus
+      </button>
+      <button
+        class="btn btn-light rounded-3 fw-bold px-4 btn-sm py-2 border"
+        id="btn-cancel-reset-ui"
+      >
+        Batal
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --modul-color: #0ea5e9;
+    --modul-color-light: rgba(14, 165, 233, 0.1);
+  }
+  .text-sky {
+    color: var(--modul-color) !important;
+  }
+  .bg-sky-light {
+    background-color: var(--modul-color-light) !important;
+  }
+  .border-sky {
+    border-color: var(--modul-color) !important;
+  }
+  .btn-sky {
+    background-color: var(--modul-color);
+    color: white;
+    border: none;
+  }
+  .btn-sky:hover {
+    background-color: #0284c7;
+    color: white;
+  }
+  .x-small {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .rounded-5 {
+    border-radius: 1.8rem !important;
+  }
+  .form-control-sm {
+    text-align: center;
+  }
+</style>

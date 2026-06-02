@@ -1,0 +1,93 @@
+<!-- ==========================================================================
+   LONTARA TECH — HALAMAN KERANJANG
+   Lokasi: sumber-konten/keranjang/keranjang.html
+   ========================================================================== -->
+
+<section class="hero" style="min-height: 40vh; padding-bottom: 50px;">
+  <div class="container hero-content">
+    <h1 class="reveal-init">Keranjang Permintaan</h1>
+    <p class="reveal-init">
+      Tinjau kembali layanan dan aset digital yang Anda pilih sebelum mengirimkan permintaan kepada tim Lontara.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 20px; padding-bottom: 80px;">
+  <div class="container">
+    
+    <div class="cart-layout">
+      
+      <!-- Container untuk List Barang (Akan dirender oleh JS) -->
+      <div id="cart-items-container" class="reveal-init">
+        <div style="text-align: center; padding: 3rem;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--accent);"></i>
+            <p style="margin-top: 1rem; color: var(--text-muted); font-weight: 600;">Memuat data spasial Anda...</p>
+        </div>
+      </div>
+
+      <!-- Container untuk Form Checkout -->
+      <div id="cart-summary-container" class="reveal-init" style="display: none;">
+        
+        <div class="cart-summary-header">
+          <h3>Ringkasan Pesanan</h3>
+        </div>
+        
+        <div class="cart-summary-row" style="align-items: center;">
+          <span style="font-weight: 600;">Total Estimasi</span>
+          <span id="cart-total-price" style="font-weight: 800; color: var(--primary); font-size: 1.5rem;">Rp 0</span>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; background: rgba(0,184,169, 0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+          <i class="fa-solid fa-circle-info text-accent" style="margin-right: 5px;"></i> 
+          Pembayaran tidak dilakukan di halaman ini. Tim kami akan menghubungi Anda untuk menyepakati detail invoice, NDA, dan teknis proyek.
+        </p>
+
+        <form id="checkout-form" style="display: flex; flex-direction: column; gap: 15px;">
+          
+          <input type="hidden" name="pesan" value="">
+
+          <div>
+            <label for="checkout-name" class="form-label">Nama Lengkap / Instansi</label>
+            <input type="text" id="checkout-name" name="nama" class="form-control" required placeholder="Cth: Fajar Nugraha" />
+          </div>
+
+          <div>
+            <label for="checkout-email" class="form-label">Email Kontak</label>
+            <input type="email" id="checkout-email" name="email" class="form-control" required placeholder="Cth: fajar@instansi.go.id" />
+          </div>
+
+          <!-- ================= INPUT BARU WA & DOMISILI ================= -->
+          <div>
+            <label for="checkout-wa" class="form-label">Nomor WhatsApp (Aktif)</label>
+            <input type="tel" id="checkout-wa" name="wa" class="form-control" required placeholder="Cth: 081234567890" />
+          </div>
+
+          <div>
+            <label for="checkout-domisili" class="form-label">Domisili / Lokasi (Opsional)</label>
+            <input type="text" id="checkout-domisili" name="domisili" class="form-control" placeholder="Cth: Makassar, Sulawesi Selatan" />
+          </div>
+          <!-- ============================================================ -->
+
+          <div>
+            <label for="checkout-notes" class="form-label">Catatan Tambahan (Opsional)</label>
+            <textarea id="checkout-notes" name="catatan_tambahan" class="form-control" rows="4" placeholder="Tuliskan lokasi proyek (misal: Sub-DAS Tanralili), spesifikasi khusus, atau pertanyaan tambahan Anda..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px; padding: 15px; font-size: 1rem; border-radius: 8px; background-color: #25D366; border-color: #25D366;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem; margin-right: 5px;"></i> Kirim Permintaan via WA
+          </button>
+          
+        </form>
+
+      </div>
+
+    </div> 
+    
+    <!-- Pemicu Render Keranjang -->
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+         alt="Cart Hydrator" 
+         style="display:none;" 
+         onload="if(window.LontaraCart && window.LontaraState) { window.LontaraCart.renderCartPage(window.LontaraState.cart); }" />
+
+  </div>
+</section>

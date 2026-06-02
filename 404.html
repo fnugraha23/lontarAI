@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Koordinat Tidak Ditemukan | Lontara</title>
+
+    <link rel="icon" type="image/png" href="aset/logo/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <style>
+      /* --- ERROR PAGE CORE --- */
+      .error-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0b1a19; /* Deep Dark Green */
+        position: relative;
+        overflow: hidden;
+        color: white;
+        padding: 20px;
+      }
+
+      /* Scanline Effect */
+      .error-page::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+          linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.03),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.03)
+          );
+        background-size:
+          100% 4px,
+          4px 100%;
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      /* --- RADAR SYSTEM ANIMATION --- */
+      .radar-system {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border: 1px solid rgba(0, 184, 169, 0.15);
+        border-radius: 50%;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .radar-sweep {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 60%,
+          rgba(0, 184, 169, 0.35)
+        );
+        animation: scan-pro 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .blip {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        filter: blur(1px);
+        box-shadow: 0 0 15px var(--accent);
+        animation: flicker 3s infinite;
+        opacity: 0;
+      }
+
+      /* --- CONTENT STYLING --- */
+      .error-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 650px;
+      }
+
+      .error-code {
+        font-size: clamp(8rem, 20vw, 12rem);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(to bottom, var(--accent), #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+        letter-spacing: -8px;
+        filter: drop-shadow(0 0 20px rgba(0, 184, 169, 0.4));
+        animation: pulse-glow 4s ease-in-out infinite;
+      }
+
+      .error-content h2 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .error-content p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 40px;
+      }
+
+      /* Animation Keyframes */
+      @keyframes scan-pro {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .radar-system {
+          width: 500px;
+          height: 500px;
+        }
+        .error-content h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header
+      class="header"
+      id="header"
+      style="background: #ffffff; border-bottom: 1px solid rgba(0, 0, 0, 0.1)"
+    >
+      <div class="container nav-container">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="aset/logo/logo-hitam.png"
+              alt="Lontara Logo"
+              height="38"
+            />
+          </a>
+        </div>
+        <a
+          href="index.html"
+          class="nav-cta"
+          style="background: var(--primary) !important"
+        >
+          <i class="fa-solid fa-house-signal"></i> Kembali ke Radar
+        </a>
+      </div>
+    </header>
+
+    <main class="error-page">
+      <div class="radar-system">
+        <div class="radar-sweep"></div>
+        <div
+          class="blip"
+          style="top: 20%; left: 40%; animation-delay: 1s"
+        ></div>
+        <div
+          class="blip"
+          style="top: 70%; left: 60%; animation-delay: 2.5s"
+        ></div>
+        <div
+          class="blip"
+          style="top: 40%; left: 20%; animation-delay: 0.5s"
+        ></div>
+      </div>
+
+      <div class="container error-content">
+        <div class="error-code">404</div>
+        <h2>Signal Lost</h2>
+        <p>
+          Koordinat spasial yang Anda cari tidak terdeteksi oleh sensor kami.
+          Rute ini mungkin telah dipindahkan atau berada di luar cakupan
+          geodatabase Lontara.
+        </p>
+
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+          "
+        >
+          <a
+            href="index.html"
+            class="btn-primary"
+            style="background: var(--accent); border: none; padding: 15px 35px"
+          >
+            Inisialisasi Beranda
+          </a>
+          <a
+            href="sumber-konten/kontak/kontak.html"
+            class="btn-secondary"
+            style="
+              border-color: rgba(255, 255, 255, 0.3);
+              color: white;
+              padding: 15px 35px;
+            "
+          >
+            Laporkan Gangguan
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      style="
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+        z-index: 10;
+      "
+    >
+      <p
+        style="
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.4);
+          letter-spacing: 1px;
+        "
+      >
+        &copy; 2026 LONTARA TECH — SPATIAL INTELLIGENCE RADAR
+      </p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,433 @@
+<style>
+  /* Styling Artikel untuk Keterbacaan Tinggi */
+  .article-body {
+    font-family: "Lora", serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--text-main);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .article-body h2 {
+    font-family: "Manrope", sans-serif;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  .article-body p {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Diagram & Box Styling */
+  .gis-illustration {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .illus-label {
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    display: block;
+    color: var(--primary);
+  }
+
+  /* SVG Workflow Animation */
+  .workflow-svg {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @keyframes pulseNode {
+    0%,
+    100% {
+      fill: var(--bg-main);
+      stroke: var(--border);
+      stroke-width: 1;
+    }
+    50% {
+      fill: rgba(0, 184, 169, 0.1);
+      stroke: var(--accent);
+      stroke-width: 2;
+    }
+  }
+
+  .wf-node {
+    fill: var(--bg-main);
+    stroke: var(--border);
+    stroke-width: 1;
+  }
+
+  .wf-step-1 {
+    animation: pulseNode 3s infinite;
+    animation-delay: 0s;
+  }
+  .wf-step-2 {
+    animation: pulseNode 3s infinite;
+    animation-delay: 0.6s;
+  }
+  .wf-step-3 {
+    animation: pulseNode 3s infinite;
+    animation-delay: 1.2s;
+  }
+  .wf-step-4 {
+    animation: pulseNode 3s infinite;
+    animation-delay: 1.8s;
+  }
+  .wf-step-5 {
+    animation: pulseNode 3s infinite;
+    animation-delay: 2.4s;
+  }
+
+  .wf-text {
+    font-family: "Manrope", sans-serif;
+    font-size: 8px;
+    font-weight: 800;
+    fill: var(--text-main);
+    pointer-events: none;
+  }
+
+  /* Tabel Data */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.9rem;
+  }
+  .comparison-table th {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    text-align: left;
+  }
+  .comparison-table td {
+    border: 1px solid var(--border);
+    padding: 15px;
+    color: var(--text-main);
+  }
+
+  .highlight-box {
+    background: rgba(0, 184, 169, 0.05);
+    border-left: 4px solid var(--accent);
+    padding: 25px;
+    border-radius: 8px;
+    margin: 30px 0;
+    font-style: italic;
+  }
+</style>
+
+<section
+  class="hero"
+  style="min-height: 45vh; padding-bottom: 60px; background: var(--bg-light)"
+>
+  <div class="container hero-content">
+    <div style="margin-bottom: 30px">
+      <a
+        href="artikel"
+        class="nav-link-ajax btn-secondary"
+        style="
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 20px;
+          border-radius: 30px;
+          font-size: 0.85rem;
+        "
+      >
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Artikel
+      </a>
+    </div>
+    <span
+      class="reveal-init"
+      style="
+        color: var(--accent);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.8rem;
+        display: block;
+        margin-bottom: 15px;
+      "
+    >
+      Metodologi Spasial
+    </span>
+    <h1 class="reveal-init" style="margin-bottom: 20px">
+      Workflow GIS: Dari Data Mentah hingga Peta
+    </h1>
+    <p class="reveal-init" style="font-size: 1.1rem; color: var(--text-muted)">
+      Oleh <strong>Fajar Nugraha</strong> &bull; 16 Maret 2026 &bull; 6 Menit
+      Membaca
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="article-body reveal-init">
+      <p>
+        Seringkali, pemula menganggap GIS hanyalah tentang membuka perangkat
+        lunak seperti QGIS atau ArcGIS, memasukkan data, dan menekan tombol
+        untuk membuat peta. Kenyataannya, pembuatan peta hanyalah puncak gunung
+        es.
+      </p>
+      <p>
+        GIS yang sebenarnya adalah sebuah <strong>proses</strong> atau
+        <strong>alur kerja (workflow)</strong> yang sistematis. Tanpa alur kerja
+        yang benar, data yang Anda miliki hanya akan menjadi tumpukan angka tak
+        bermakna, atau menghasilkan peta yang menyesatkan (<em
+          >garbage in, garbage out</em
+        >).
+      </p>
+
+      <div class="gis-illustration">
+        <span class="illus-label"
+          >Diagram Alur Kerja Lontara: 5 Tahap Kunci</span
+        >
+        <svg viewBox="0 0 780 100" class="workflow-svg">
+          <defs>
+            <marker
+              id="arrowhead"
+              markerWidth="10"
+              markerHeight="7"
+              refX="0"
+              refY="3.5"
+              orient="auto"
+            >
+              <polygon points="0 0, 10 3.5, 0 7" fill="var(--border)" />
+            </marker>
+          </defs>
+
+          <line
+            x1="135"
+            y1="50"
+            x2="155"
+            y2="50"
+            stroke="var(--border)"
+            marker-end="url(#arrowhead)"
+          />
+          <line
+            x1="295"
+            y1="50"
+            x2="315"
+            y2="50"
+            stroke="var(--border)"
+            marker-end="url(#arrowhead)"
+          />
+          <line
+            x1="455"
+            y1="50"
+            x2="475"
+            y2="50"
+            stroke="var(--border)"
+            marker-end="url(#arrowhead)"
+          />
+          <line
+            x1="615"
+            y1="50"
+            x2="635"
+            y2="50"
+            stroke="var(--border)"
+            marker-end="url(#arrowhead)"
+          />
+
+          <rect
+            x="10"
+            y="25"
+            width="120"
+            height="50"
+            rx="8"
+            class="wf-node wf-step-1"
+          />
+          <text
+            x="70"
+            y="58"
+            text-anchor="middle"
+            class="wf-text"
+            font-size="22"
+            font-weight="bold"
+          >
+            1. INPUT
+          </text>
+
+          <rect
+            x="170"
+            y="25"
+            width="120"
+            height="50"
+            rx="8"
+            class="wf-node wf-step-2"
+          />
+          <text
+            x="230"
+            y="58"
+            text-anchor="middle"
+            class="wf-text"
+            font-size="22"
+            font-weight="bold"
+          >
+            2. KELOLA
+          </text>
+
+          <rect
+            x="330"
+            y="25"
+            width="120"
+            height="50"
+            rx="8"
+            class="wf-node wf-step-3"
+          />
+          <text
+            x="390"
+            y="58"
+            text-anchor="middle"
+            class="wf-text"
+            font-size="22"
+            font-weight="bold"
+          >
+            3. OLAH
+          </text>
+
+          <rect
+            x="490"
+            y="25"
+            width="120"
+            height="50"
+            rx="8"
+            class="wf-node wf-step-4"
+          />
+          <text
+            x="550"
+            y="58"
+            text-anchor="middle"
+            class="wf-text"
+            font-size="22"
+            font-weight="bold"
+          >
+            4. ANALISIS
+          </text>
+
+          <rect
+            x="650"
+            y="25"
+            width="120"
+            height="50"
+            rx="8"
+            class="wf-node wf-step-5"
+          />
+          <text
+            x="710"
+            y="58"
+            text-anchor="middle"
+            class="wf-text"
+            font-size="22"
+            font-weight="bold"
+          >
+            5. OUTPUT
+          </text>
+        </svg>
+        <p
+          style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px"
+        >
+          Siklus ini bersifat iteratif—hasil analisis seringkali mengharuskan
+          kita kembali ke tahap pengelolaan data.
+        </p>
+      </div>
+
+      <h2>1. Perencanaan & Definisi Masalah</h2>
+      <p>
+        Alur kerja GIS selalu dimulai <strong>sebelum</strong> Anda menyentuh
+        komputer. Anda butuh pertanyaan spasial yang jelas. Misal:
+        <em
+          >"Di mana lokasi optimal untuk membangun embung resapan di Sub-DAS
+          Tanralili?"</em
+        >
+      </p>
+
+      <h2>2. Input & Akuisisi Data</h2>
+      <p>
+        Mengumpulkan "bahan mentah" dari berbagai sumber. Di era industri 4.0,
+        data bisa berasal dari sensor lapangan maupun satelit.
+      </p>
+      <div style="overflow-x: auto">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Sumber</th>
+              <th>Contoh Aset</th>
+              <th>Format Umum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Remote Sensing</strong></td>
+              <td>Citra Sentinel, Landsat, Drone</td>
+              <td>GeoTIFF, JPG</td>
+            </tr>
+            <tr>
+              <td><strong>Terestrial</strong></td>
+              <td>Survei GPS, Batas Lahan</td>
+              <td>CSV, GPX, SHP</td>
+            </tr>
+            <tr>
+              <td><strong>Institusi</strong></td>
+              <td>Batas Administrasi, Jalan</td>
+              <td>GeoPackage, KML</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>3. Pra-Pengolahan (Cleaning Data)</h2>
+      <p>
+        Tahap yang paling memakan waktu (sekitar 70% dari total durasi proyek).
+        Kegiatan utamanya meliputi perbaikan topologi (garis tidak nyambung),
+        penyatuan tabel atribut, dan penyelarasan sistem koordinat.
+      </p>
+
+      <h2>4. Analisis Spasial</h2>
+      <p>
+        Di sinilah kita menggunakan algoritma untuk mencari jawaban. Teknik
+        seperti <strong>Overlay</strong> (tumpang susun parameter) dan
+        <strong>Buffering</strong> (analisis radius jangkauan) adalah menu utama
+        di tahap ini.
+      </p>
+
+      <h2>5. Visualisasi & Pelaporan</h2>
+      <p>
+        Tahap akhir adalah mengemas hasil analisis menjadi produk yang mudah
+        dipahami, baik berupa peta cetak formal, dashboard interaktif, maupun
+        laporan teknis yang komprehensif.
+      </p>
+
+      <p style="margin-top: 40px">
+        Kesimpulannya, kualitas sebuah peta ditentukan oleh kedisiplinan Anda
+        dalam mengikuti setiap tahapan alur kerja ini.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="cta reveal-init">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Siap Mengolah Data Spasial Anda?</h2>
+      <p>
+        Tim Lontara siap membantu Anda melakukan ekstraksi dan analisis data
+        satelit untuk kebutuhan industri.
+      </p>
+      <a href="sumber-konten/kontak/kontak.html" class="nav-link-ajax btn-dark"
+        >Hubungi Spesialis Kami</a
+      >
+    </div>
+  </div>
+</section>

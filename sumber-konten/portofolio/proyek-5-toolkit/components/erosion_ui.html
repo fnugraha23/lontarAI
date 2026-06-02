@@ -1,0 +1,568 @@
+<div class="animate__animated animate__fadeIn position-relative">
+  <div class="row align-items-center mb-5 text-start">
+    <div class="col-md-8">
+      <div
+        class="badge bg-orange-light text-orange px-3 py-2 rounded-pill mb-2 fw-bold"
+      >
+        <i class="fa-solid fa-cloud-showers-heavy me-2"></i>Modul Prediksi Erosi
+      </div>
+      <h2 class="fw-extrabold tracking-tighter display-6 text-dark">
+        Estimasi Kehilangan Tanah (USLE)
+      </h2>
+      <p class="text-muted mb-0">
+        Analisis laju erosi tahunan per SPL - <b>DAS Tanralili</b>.
+      </p>
+    </div>
+    <div class="col-md-4 text-md-end">
+      <button
+        class="btn btn-outline-dark rounded-4 px-4 fw-bold shadow-sm"
+        data-component="home"
+      >
+        <i class="fa-solid fa-house-chimney me-2"></i>Dashboard
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 overflow-hidden mb-5 border-start border-orange border-5"
+  >
+    <div class="card-header bg-white border-0 pt-4 px-4 text-start">
+      <h5 class="fw-bold text-orange mb-0">Tabel Master USLE</h5>
+    </div>
+    <div class="card-body p-4 text-start">
+      <div class="table-responsive">
+        <table
+          class="table table-borderless align-middle text-center"
+          id="table-erosion"
+        >
+          <thead
+            class="x-small fw-bold text-uppercase text-muted border-bottom"
+          >
+            <tr>
+              <th style="width: 50px"></th>
+              <th class="text-start" style="width: 140px">ID SPL</th>
+              <th>R (Hujan)</th>
+              <th>K (Tanah)</th>
+              <th>LS (Lereng)</th>
+              <th style="width: 240px">Faktor C (Penutupan Lahan)</th>
+              <th style="width: 200px">Faktor P (Konservasi)</th>
+              <th class="text-orange fw-bold">A (Erosi)</th>
+              <th class="text-orange">TBE</th>
+              <th style="width: 50px"></th>
+            </tr>
+          </thead>
+          <tbody id="body-erosion">
+            <tr class="master-row border-bottom border-light">
+              <td>
+                <button
+                  class="btn btn-sm btn-light rounded-circle btn-expand shadow-sm"
+                  onclick="ErosionEngine.toggleDrawer(this)"
+                >
+                  <i class="fa-solid fa-chevron-down text-muted"></i>
+                </button>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm border-0 bg-light rounded-3 fw-bold"
+                  value="SPL-01"
+                />
+              </td>
+              <td><div class="fw-bold text-dark factor-r">0.00</div></td>
+              <td><div class="fw-bold text-dark factor-k">0.000</div></td>
+              <td><div class="fw-bold text-dark factor-ls">0.00</div></td>
+              <td>
+                <select
+                  class="form-select form-select-sm border-0 bg-light rounded-3 factor-c text-start"
+                >
+                  <option value="0.001">
+                    Hutan lahan kering primer (0.001)
+                  </option>
+                  <option value="0.005">
+                    Hutan lahan kering sekunder (0.005)
+                  </option>
+                  <option value="0.001">Hutan mangrove primer (0.001)</option>
+                  <option value="0.005">Hutan mangrove sekunder (0.005)</option>
+                  <option value="0.001">Hutan rawa primer (0.001)</option>
+                  <option value="0.005">Hutan rawa sekunder (0.005)</option>
+                  <option value="0.01">Hutan tanaman (0.01)</option>
+                  <option value="0.01">Semak/Belukar (0.01)</option>
+                  <option value="0.01">Belukar rawa (0.01)</option>
+                  <option value="0.2">Pertanian lahan kering (0.2)</option>
+                  <option value="0.3">
+                    Pertanian lahan kering campur (0.3)
+                  </option>
+                  <option value="0.01">Sawah (0.01)</option>
+                  <option value="0.01">Tambak (0.01)</option>
+                  <option value="0.15">Perkebunan (0.15)</option>
+                  <option value="0.1">Pemukiman (0.1)</option>
+                  <option value="0.1">Bandara/Pelabuhan (0.1)</option>
+                  <option value="0.1">Transmigrasi (0.1)</option>
+                  <option value="1.0">Tanah terbuka (1.0)</option>
+                  <option value="1.0">Pertambangan (1.0)</option>
+                  <option value="0.0">Awan (0.0)</option>
+                  <option value="0.01">Padang rumput (0.01)</option>
+                  <option value="0.0">Badan air (0.0)</option>
+                  <option value="0.0">Rawa (0.0)</option>
+                </select>
+              </td>
+              <td>
+                <select
+                  class="form-select form-select-sm border-0 bg-light rounded-3 factor-p text-start"
+                >
+                  <option value="1.0">Tanpa Konservasi (1.0)</option>
+                  <option value="0.04">Teras Bangku Baik (0.04)</option>
+                  <option value="0.15">Teras Bangku Sedang (0.15)</option>
+                  <option value="0.50">Kontur / Saluran Diversi (0.50)</option>
+                  <option value="0.10">Strip Rumput (0.10)</option>
+                  <option value="0.01">Mulsa Jerami (0.01)</option>
+                </select>
+              </td>
+              <td class="px-2">
+                <div
+                  class="bg-orange-light py-2 rounded-3 fw-bold text-orange result-a"
+                >
+                  --
+                </div>
+              </td>
+              <td class="px-2">
+                <div
+                  class="bg-orange-light py-2 rounded-3 fw-bold text-orange small tbe-class"
+                >
+                  --
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-link text-danger p-0 btn-delete-row">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr class="drawer-row d-none">
+              <td colspan="10" class="p-0">
+                <div
+                  class="bg-light p-4 rounded-4 m-2 shadow-inner border border-orange border-opacity-10 text-start"
+                >
+                  <div class="mb-5 pb-4 border-bottom border-white">
+                    <h6 class="fw-bold text-orange small text-uppercase mb-3">
+                      A. Erosivitas Hujan (R)
+                    </h6>
+                    <div class="row g-3">
+                      <div class="col-md-3">
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input check-r"
+                            type="checkbox"
+                            id="checkBols"
+                            checked
+                          />
+                          <label
+                            class="form-check-label x-small fw-bold"
+                            for="checkBols"
+                            >Bols (Bulanan)</label
+                          >
+                        </div>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm raw-r-bols"
+                          placeholder="CH (mm)"
+                        />
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input check-r"
+                            type="checkbox"
+                            id="checkLenvain"
+                          />
+                          <label
+                            class="form-check-label x-small fw-bold"
+                            for="checkLenvain"
+                            >Lenvain (Tahunan)</label
+                          >
+                        </div>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm raw-r-lenvain"
+                          placeholder="P (mm)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-5 pb-4 border-bottom border-white">
+                    <h6 class="fw-bold text-orange small text-uppercase mb-3">
+                      B. Erodibilitas Tanah (K)
+                    </h6>
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <label class="x-small fw-bold text-muted mb-2"
+                          >1. Input Lab</label
+                        >
+                        <div class="row g-2 mb-3">
+                          <div class="col-4">
+                            <input
+                              type="number"
+                              class="form-control form-control-sm raw-k-mvfs"
+                              placeholder="% Debu+VFS"
+                            />
+                          </div>
+                          <div class="col-4">
+                            <input
+                              type="number"
+                              class="form-control form-control-sm raw-k-clay"
+                              placeholder="% Liat"
+                            />
+                          </div>
+                          <div class="col-4">
+                            <input
+                              type="number"
+                              class="form-control form-control-sm raw-k-bo"
+                              placeholder="% BO"
+                            />
+                          </div>
+                        </div>
+                        <label class="x-small fw-bold text-muted mb-2"
+                          >2. Pilihan Harkat</label
+                        >
+                        <div class="row g-2">
+                          <div class="col-6">
+                            <select
+                              class="form-select form-select-sm raw-k-struk"
+                            >
+                              <option value="1">
+                                1 (Granular sangat halus)
+                              </option>
+                              <option value="2">2 (Granular halus)</option>
+                              <option value="3">
+                                3 (Granular sedang/kasar)
+                              </option>
+                              <option value="4">
+                                4 (Gumpal, lempeng, pejal)
+                              </option>
+                            </select>
+                          </div>
+                          <div class="col-6">
+                            <select
+                              class="form-select form-select-sm raw-k-perm"
+                            >
+                              <option value="1">1 (Cepat >25.4)</option>
+                              <option value="2">2 (Sd-Cepat 12.7-25.4)</option>
+                              <option value="3">3 (Sedang 6.3-12.7)</option>
+                              <option value="4">4 (Sd-Lambat 2.0-6.3)</option>
+                              <option value="5">5 (Lambat 0.5-2.0)</option>
+                              <option value="6">6 (S. Lambat <0.56)</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h6 class="fw-bold text-orange small text-uppercase mb-3">
+                      C. Faktor Panjang & Lereng (LS)
+                    </h6>
+                    <div class="row g-3">
+                      <div class="col-md-3">
+                        <label class="x-small text-muted mb-1"
+                          >Panjang Lereng (L)</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control form-control-sm raw-ls-l"
+                          placeholder="meter (m)"
+                        />
+                      </div>
+                      <div class="col-md-3">
+                        <label class="x-small text-muted mb-1"
+                          >Kemiringan (S)</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control form-control-sm raw-ls-s"
+                          placeholder="persen (%)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="btn btn-orange btn-sm rounded-3 mt-3 px-4 fw-bold shadow-sm"
+        id="btn-add-row-erosion"
+      >
+        <i class="fa-solid fa-plus me-2"></i>Tambah Sampel SPL
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-5 p-5 bg-dark text-white mb-5 text-start"
+  >
+    <h4 class="fw-bold text-orange mb-5">
+      <i class="fa-solid fa-book-open me-3"></i>Transparansi Metodologi USLE
+    </h4>
+
+    <div class="mb-5">
+      <h6 class="text-orange fw-bold text-uppercase tracking-wider mb-3">
+        A. Erosivitas Hujan (R)
+      </h6>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div
+            class="bg-secondary bg-opacity-20 p-4 rounded-4 h-100 d-flex flex-column justify-content-between border border-secondary border-opacity-25"
+          >
+            <div>
+              <p class="small mb-3 fw-bold text-white">
+                Metode Bols (Data Bulanan):
+              </p>
+              <div class="py-3 text-center">
+                $$R = \frac{2.5 \cdot CH^2}{100(0.073 CH + 0.73)}$$
+              </div>
+            </div>
+            <p
+              class="x-small mt-3 mb-0 text-white-50 italic border-top border-secondary border-opacity-50 pt-3"
+            >
+              *Ket: <b>CH</b> = Curah hujan rata-rata bulanan (mm).
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="bg-secondary bg-opacity-20 p-4 rounded-4 h-100 d-flex flex-column justify-content-between border border-secondary border-opacity-25"
+          >
+            <div>
+              <p class="small mb-3 fw-bold text-white">
+                Metode Lenvain (Data Tahunan):
+              </p>
+              <div class="py-3 text-center">$$R = 2.21 \cdot P^{1.36}$$</div>
+            </div>
+            <p
+              class="x-small mt-3 mb-0 text-white-50 italic border-top border-secondary border-opacity-50 pt-3"
+            >
+              *Ket: <b>P</b> = Total curah hujan tahunan (cm).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <h6 class="text-orange fw-bold text-uppercase tracking-wider mb-3">
+        B. Erodibilitas Tanah (K)
+      </h6>
+      <div
+        class="bg-secondary bg-opacity-20 p-4 rounded-4 mb-4 border border-secondary border-opacity-25"
+      >
+        <p class="small mb-3 fw-bold text-white">
+          Persamaan Nomograf Wischmeier & Smith (1978):
+        </p>
+        <div class="py-2 text-center">
+          $$100 K = 2.1 \cdot M^{1.14} (10^{-4})(12-a) + 3.25 (b-2) + 2.5
+          (c-3)$$
+        </div>
+        <div
+          class="row mt-3 x-small text-white-50 pt-3 border-top border-secondary border-opacity-50 text-center"
+        >
+          <div class="col-md-6">
+            <b>M</b> = (%Debu + %Pasir S. Halus) &middot; (100 - %Liat) |
+            <b>a</b> = %BO
+          </div>
+          <div class="col-md-6">
+            <b>b</b> = Struktur Tanah | <b>c</b> = Permeabilitas Tanah
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-5">
+          <p class="x-small fw-bold text-orange text-uppercase mb-2">
+            Tipe Struktur Tanah (b)
+          </p>
+          <table
+            class="table table-sm table-dark table-bordered border-secondary x-small mb-0"
+          >
+            <thead>
+              <tr class="bg-secondary bg-opacity-30">
+                <th>Deskripsi Struktur</th>
+                <th class="text-center">Nilai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Granular sangat halus</td>
+                <td class="text-center">1</td>
+              </tr>
+              <tr>
+                <td>Granular halus</td>
+                <td class="text-center">2</td>
+              </tr>
+              <tr>
+                <td>Granular sedang dan kasar</td>
+                <td class="text-center">3</td>
+              </tr>
+              <tr>
+                <td>Gumpal, lempeng, pejal</td>
+                <td class="text-center">4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-7">
+          <p class="x-small fw-bold text-orange text-uppercase mb-2">
+            Kelas Permeabilitas Tanah (c)
+          </p>
+          <table
+            class="table table-sm table-dark table-bordered border-secondary x-small mb-0"
+          >
+            <thead>
+              <tr class="bg-secondary bg-opacity-30">
+                <th>Kelas</th>
+                <th>Kecepatan (cm/jam)</th>
+                <th class="text-center">Nilai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cepat</td>
+                <td>> 25.4</td>
+                <td class="text-center">1</td>
+              </tr>
+              <tr>
+                <td>Sedang sampai cepat</td>
+                <td>12.7 – 25.4</td>
+                <td class="text-center">2</td>
+              </tr>
+              <tr>
+                <td>Sedang</td>
+                <td>6.3 – 12.7</td>
+                <td class="text-center">3</td>
+              </tr>
+              <tr>
+                <td>Sedang sampai lambat</td>
+                <td>2.0 – 6.3</td>
+                <td class="text-center">4</td>
+              </tr>
+              <tr>
+                <td>Lambat</td>
+                <td>0.5 – 2.0</td>
+                <td class="text-center">5</td>
+              </tr>
+              <tr>
+                <td>Sangat Lambat</td>
+                <td>< 0.56</td>
+                <td class="text-center">6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="text-orange fw-bold text-uppercase tracking-wider mb-3">
+        C. Panjang & Kemiringan Lereng (LS)
+      </h6>
+      <div
+        class="bg-secondary bg-opacity-20 p-4 rounded-4 border border-secondary border-opacity-25 text-center"
+      >
+        <div class="py-2">
+          $$LS = \sqrt{L} \cdot (0.00138 S^2 + 0.00965 S + 0.0138)$$
+        </div>
+        <p
+          class="x-small mt-3 mb-0 text-white-50 italic border-top border-secondary border-opacity-50 pt-3"
+        >
+          *Ket: <b>L</b> = Panjang lereng (m); <b>S</b> = Kemiringan lereng (%).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center gap-3 mb-5 pb-5">
+    <div id="reset-default-state" class="d-flex gap-3">
+      <button
+        class="btn btn-outline-secondary btn-lg rounded-4 px-5 fw-bold shadow-sm"
+        id="btn-trigger-reset-ui"
+      >
+        Reset Data
+      </button>
+      <button
+        class="btn btn-dark btn-lg rounded-4 px-5 fw-bold shadow"
+        id="btn-export-erosion"
+      >
+        Export CSV <i class="fa-solid fa-file-csv ms-2"></i>
+      </button>
+    </div>
+
+    <div
+      id="reset-confirm-state"
+      class="d-none animate__animated animate__headShake bg-danger bg-opacity-10 p-2 rounded-4 border border-danger border-opacity-25 d-flex align-items-center gap-2"
+    >
+      <span class="x-small fw-bold text-danger px-3"
+        ><i class="fa-solid fa-circle-exclamation me-2"></i>Hapus data
+        permanen?</span
+      >
+      <button
+        class="btn btn-danger rounded-3 fw-bold px-4 btn-sm py-2"
+        id="btn-final-reset-execute"
+      >
+        Ya, Hapus
+      </button>
+      <button
+        class="btn btn-light rounded-3 fw-bold px-4 btn-sm py-2 border"
+        id="btn-cancel-reset-ui"
+      >
+        Batal
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --orange-color: #f97316;
+    --orange-light: rgba(249, 115, 22, 0.1);
+  }
+  .text-orange {
+    color: var(--orange-color) !important;
+  }
+  .bg-orange-light {
+    background-color: var(--orange-light) !important;
+  }
+  .border-orange {
+    border-color: var(--orange-color) !important;
+  }
+  .btn-orange {
+    background-color: var(--orange-color);
+    color: white;
+    border: none;
+  }
+  .btn-orange:hover {
+    background-color: #ea580c;
+    color: white;
+  }
+  .x-small {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .rounded-5 {
+    border-radius: 1.8rem !important;
+  }
+  .shadow-inner {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  input.form-control-sm,
+  .form-select-sm {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .italic {
+    font-style: italic;
+  }
+</style>

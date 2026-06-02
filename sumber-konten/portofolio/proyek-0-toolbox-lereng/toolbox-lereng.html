@@ -1,0 +1,356 @@
+<style>
+  /* --- Local Styles for Project Showcase --- */
+  .hero-project {
+    padding: 100px 0 60px;
+    background: linear-gradient(to bottom, var(--bg-light), var(--bg-main));
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .breadcrumb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #123b3a; /* Lontara Primary */
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .breadcrumb-back:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .project-badge {
+    display: inline-block;
+    background: rgba(0, 184, 169, 0.1);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* Style untuk Workflow Langkah-langkah */
+  .workflow-step {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .workflow-step {
+      flex-direction: row;
+      align-items: center;
+    }
+    .workflow-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .workflow-text {
+    flex: 1;
+  }
+
+  .workflow-image-container {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .workflow-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+</style>
+
+<section class="hero-project">
+  <div class="container">
+    <a
+      href="portofolio"
+      class="nav-link-ajax breadcrumb-back"
+    >
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio
+    </a>
+    <br />
+    <span class="project-badge">Python GIS Automation</span>
+    <h1
+      class="reveal-init"
+      style="
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: #123b3a;
+        margin-bottom: 24px;
+        font-weight: 800;
+      "
+    >
+      Toolbox ArcGIS Desktop: Otomasi Kelas Lereng
+    </h1>
+    <p
+      class="reveal-init"
+      style="
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 800px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      "
+    >
+      Sebuah <b>Custom Python Toolbox</b> (.pyt) yang saya kembangkan untuk
+      menyederhanakan dan mengotomatisasi proses ekstraksi kelas lereng dari
+      data DEM. Alat ini dilengkapi dengan algoritma pembersihan data (Minimum
+      Mapping Unit/MMU) yang berjalan secara iteratif.
+    </p>
+    <div
+      class="reveal-init"
+      style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap"
+    >
+      <a href="#workflow" class="btn-primary">Lihat Alur Kerja</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: var(--bg-light)">
+  <div class="container">
+    <div class="grid-3">
+      <div class="card reveal-init">
+        <i
+          class="fa-brands fa-python"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 20px"
+        ></i>
+        <h3>ArcPy Scripting</h3>
+        <p>
+          Dikembangkan sepenuhnya menggunakan bahasa Python dan
+          <b>library</b> ArcPy untuk performa komputasi geospasial yang
+          maksimal.
+        </p>
+      </div>
+      <div class="card reveal-init">
+        <i
+          class="fa-solid fa-sliders"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 20px"
+        ></i>
+        <h3>Parameter Dinamis</h3>
+        <p>
+          Pengguna dapat menentukan jumlah kelas lereng dan skala peta secara
+          dinamis langsung dari antarmuka <b>Toolbox</b>.
+        </p>
+      </div>
+      <div class="card reveal-init">
+        <i
+          class="fa-solid fa-filter"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 20px"
+        ></i>
+        <h3>Iteratif MMU</h3>
+        <p>
+          Dilengkapi algoritma eliminasi <b>noise</b> (Minimum Mapping Unit)
+          iteratif otomatis untuk menghasilkan poligon siap kartografi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workflow" class="section">
+  <div class="container">
+    <h2 class="section-title reveal-init" style="text-align: center">
+      Alur Kerja Eksekusi Toolbox
+    </h2>
+    <p
+      class="section-subtitle reveal-init"
+      style="text-align: center; max-width: 600px; margin: 0 auto 50px"
+    >
+      Bagaimana <b>Python Toolbox</b> ini mengubah data mentah menjadi informasi
+      topografi yang terklasifikasi hanya dalam beberapa kali klik.
+    </p>
+
+    <div class="workflow-step reveal-init">
+      <div class="workflow-text">
+        <div class="step-number">1</div>
+        <h3>Input Data DEM Mentah</h3>
+        <p style="color: var(--text-muted); line-height: 1.6">
+          Proses dimulai dengan memasukkan data elevasi mentah (Digital
+          Elevation Model / DEM) ke dalam <b>workspace</b> (seperti DEM wilayah
+          Maros pada contoh ini). Data ini akan menjadi basis perhitungan
+          kemiringan lereng.
+        </p>
+      </div>
+      <div class="workflow-image-container">
+        <img src="aset\img-portofolio\proyek-0\1.png" alt="Input Data DEM" />
+      </div>
+    </div>
+
+    <div class="workflow-step reveal-init">
+      <div class="workflow-text">
+        <div class="step-number">2</div>
+        <h3>Eksekusi Python Toolbox Custom</h3>
+        <p style="color: var(--text-muted); line-height: 1.6">
+          Memanggil alat pemrosesan khusus
+          <strong>"Analisis Kelas Lereng.pyt"</strong> melalui ArcCatalog.
+          <b>Tool</b> ini menampilkan antarmuka yang bersih untuk memasukkan
+          direktori Input DEM, Output Raster, dan Output Polygon yang
+          diinginkan.
+        </p>
+      </div>
+      <div
+        class="workflow-image-container"
+        style="
+          flex-direction: column;
+          gap: 10px;
+          padding: 20px;
+          background: white;
+        "
+      >
+        <img
+          src="aset\img-portofolio\proyek-0\2.png"
+          alt="Python Toolbox"
+          style="max-width: 80%; border: 1px solid #ddd; border-radius: 6px"
+        />
+        <img
+          src="aset\img-portofolio\proyek-0\3.png"
+          alt="UI Dialog Box"
+          style="box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-radius: 6px"
+        />
+      </div>
+    </div>
+
+    <div class="workflow-step reveal-init">
+      <div class="workflow-text">
+        <div class="step-number">3</div>
+        <h3>Konfigurasi Kelas & Skala Pemetaan</h3>
+        <p style="color: var(--text-muted); line-height: 1.6">
+          Fitur utama dari skrip ini adalah kemampuannya menerima parameter
+          dinamis. Analis dapat menentukan klasifikasi lereng (misal:
+          <strong>5 Kelas</strong> atau <strong>7 Kelas</strong>) serta
+          menentukan resolusi skala peta (<strong>50K, 100K, 250K</strong>) yang
+          nantinya akan memicu algoritma <b>Minimum Mapping Unit</b> (MMU) untuk
+          menyederhanakan poligon secara otomatis.
+        </p>
+      </div>
+      <div
+        class="workflow-image-container"
+        style="
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          padding: 30px;
+          background: white;
+        "
+      >
+        <img
+          src="aset\img-portofolio\proyek-0\4.png"
+          alt="Klasifikasi 5 atau 7 Kelas"
+          style="width: 45%; border: 1px solid #ddd; border-radius: 4px"
+        />
+        <img
+          src="aset\img-portofolio\proyek-0\5.png"
+          alt="Pilihan Skala Peta"
+          style="width: 45%; border: 1px solid #ddd; border-radius: 4px"
+        />
+      </div>
+    </div>
+
+    <div class="workflow-step reveal-init">
+      <div class="workflow-text">
+        <div class="step-number">4</div>
+        <h3>Selesai: Output Hasil Terklasifikasi</h3>
+        <p style="color: var(--text-muted); line-height: 1.6">
+          Dalam hitungan detik, algoritma Python mengeksekusi konversi
+          kemiringan, <b>reclassify</b>, raster ke poligon, dan eliminasi
+          poligon kecil (MMU). Hasil akhirnya adalah peta lereng terklasifikasi
+          yang akurat, mulus, dan siap digunakan untuk penyusunan laporan atau
+          desain tata ruang.
+        </p>
+      </div>
+      <div class="workflow-image-container">
+        <img
+          src="aset\img-portofolio\proyek-0\6.png"
+          alt="Hasil Klasifikasi Lereng"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="section section-cta-green"
+  style="
+    background-color: #123b3a !important;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+  "
+>
+  <div class="container">
+    <h2 class="reveal-init" style="color: white; margin-bottom: 20px">
+      Cari Talenta untuk Otomasi Sistem Geospasial?
+    </h2>
+    <p
+      class="reveal-init"
+      style="
+        margin-bottom: 40px;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      Saya dapat membantu tim Anda memangkas waktu pengerjaan analisis keruangan
+      yang repetitif melalui pengembangan <b>scripting</b> dan
+      <b>custom tools</b> serupa.
+    </p>
+    <div class="reveal-init">
+      <a
+        href="sumber-konten/kontak/kontak.html"
+        class="nav-link-ajax btn-cta-white"
+        style="
+          display: inline-block;
+          background: white;
+          color: #123b3a;
+          padding: 16px 40px;
+          border-radius: 8px;
+          font-weight: 800;
+          text-decoration: none;
+          transition: 0.3s;
+        "
+      >
+        Mari Berbincang
+      </a>
+    </div>
+  </div>
+</section>

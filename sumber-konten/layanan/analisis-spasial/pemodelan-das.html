@@ -1,0 +1,204 @@
+<!-- ==========================================================================
+   LONTARA TECH — HALAMAN DETAIL PRODUK
+   Lokasi: sumber-konten/layanan/analisis-spasial/analisis-spasial.html
+   Fungsi: Menampilkan detail spesifik, fitur, dan harga untuk Pemodelan DAS
+   ========================================================================== -->
+
+<!-- Bagian 1: Breadcrumb & Navigasi Kembali -->
+<section style="padding-top: 2rem; background-color: var(--bg-main);">
+  <div class="container">
+    <a href="#layanan" class="nav-link-ajax" style="color: var(--text-muted); font-size: 0.95rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Katalog Layanan
+    </a>
+  </div>
+</section>
+
+<!-- Bagian 2: Etalase Utama Produk (Gambar & Checkout Box) -->
+<section class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
+  <div class="container">
+    <div class="grid-2 align-start" style="gap: 4rem;">
+      
+      <!-- KOLOM KIRI: Galeri Gambar Produk -->
+      <div class="reveal-init">
+        <div class="card-slider-container" style="border-radius: var(--radius); box-shadow: var(--shadow-md); aspect-ratio: 4/3;">
+          <div class="card-slider-track">
+            <!-- Ganti dengan portofolio peta analisis asli Lontara -->
+            <img src="https://placehold.co/800x600/00b8a9/ffffff?text=Peta+Laju+Erosi" alt="Peta Laju Erosi">
+            <img src="https://placehold.co/800x600/2f2f2f/ffffff?text=Arahan+Penggunaan+Lahan" alt="Peta Arahan Lahan">
+            <img src="https://placehold.co/800x600/f6416c/ffffff?text=Morfometri+DAS" alt="Peta Morfometri">
+          </div>
+          <button class="slider-btn slider-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="slider-btn slider-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <!-- KOLOM KANAN: Informasi Pembelian -->
+      <div class="reveal-init" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block;">Kategori: Analisis Spasial & Lingkungan</span>
+        
+        <h1 style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 15px; line-height: 1.2;">
+          Pemodelan DAS & Konservasi Lahan
+        </h1>
+        
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">
+          Analisis komprehensif terhadap ekosistem Daerah Aliran Sungai (DAS). Kami mengevaluasi daya dukung lingkungan untuk memitigasi risiko bencana hidro-meteorologis dan merumuskan strategi konservasi tanah yang tepat sasaran.
+        </p>
+
+        <!-- Kotak Harga & Keranjang -->
+        <div style="background-color: var(--bg-light); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 25px; box-shadow: var(--shadow-sm);">
+          
+          <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.1rem;">Rp 5.000.000</span>
+              <span style="background-color: #ef4444; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">HEMAT 30%</span>
+            </div>
+            <span style="font-weight: 800; color: var(--primary); font-size: 2.2rem;">Rp 3.500.000</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">*Harga estimasi untuk 1 unit Sub-DAS luasan standar.</span>
+          </div>
+
+          <button class="btn-primary btn-add-cart" style="width: 100%; padding: 18px; font-size: 1.1rem; border-radius: 8px;"
+            data-id="SRV-DAS-01" 
+            data-nama="Pemodelan DAS & Hidrologi" 
+            data-harga="3500000" 
+            data-kategori="Analisis Spasial">
+            <i class="fa-solid fa-cart-plus"></i> Tambah ke Keranjang
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Bagian 3: Spesifikasi & Detail Lengkap -->
+<section class="section" style="background-color: var(--bg-light); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="grid-2 align-start" style="gap: 4rem;">
+      
+      <!-- Deskripsi Panjang -->
+      <div class="reveal-init">
+        <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); border-bottom: 2px solid var(--accent); padding-bottom: 10px; display: inline-block;">
+          Deskripsi Layanan
+        </h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 15px;">
+          Dinamika perubahan tutupan lahan seringkali menjadi pemicu utama menurunnya performa hidrologis suatu wilayah, yang berujung pada tingginya angka erosi, sedimentasi, dan fluktuasi debit air ekstrem. Layanan Pemodelan DAS dari Lontara dirancang khusus untuk memetakan masalah tersebut langsung dari akarnya.
+        </p>
+        <p style="color: var(--text-muted); line-height: 1.8;">
+          Menggabungkan data topografi (DEM), curah hujan, karakteristik tanah, dan citra satelit, kami menyusun model keruangan yang presisi. Pendekatan komputasi spasial kami membantu instansi maupun peneliti mereduksi proses <i>trial and error</i> manual yang memakan waktu, sehingga arahan penggunaan lahan untuk memulihkan kinerja DAS dapat dirumuskan secara cepat, akurat, dan dapat dipertanggungjawabkan secara ilmiah.
+        </p>
+      </div>
+
+      <!-- Daftar Fitur (Checklist) -->
+      <div class="card reveal-init" style="padding: 2rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 20px;">Fokus Analisis & Output</h3>
+        
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-layer-group text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Prediksi Laju Erosi (USLE/RUSLE)</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Pemetaan Tingkat Bahaya Erosi (TBE) secara spasial untuk mengidentifikasi area kritis yang membutuhkan intervensi segera.</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-water text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Analisis Morfometri DAS</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Kalkulasi parameter fisik DAS (kerapatan jaringan parit, rasio percabangan sungai, bentuk DAS) yang mempengaruhi respons hidrologi.</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-leaf text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Arahan Penggunaan Lahan Optimal</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Simulasi penataan ruang berbasis kesesuaian ekologis guna meminimalisasi limpasan permukaan (<i>surface runoff</i>).</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px;">
+            <i class="fa-solid fa-shield-halved text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Rekomendasi Teknik Konservasi</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Penyusunan panduan metode konservasi Tanah dan Air (vegetatif maupun mekanis/sipil teknis) sesuai kondisi bentang alam spesifik.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     ENGINE HYDRATION UNTUK SLIDER THUMBNAIL
+     ========================================== -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+     alt="Slider Hydrator" 
+     style="display:none;" 
+     onload="
+       const initSliders = () => {
+         const sliders = document.querySelectorAll('.card-slider-container');
+         
+         sliders.forEach(slider => {
+           const track = slider.querySelector('.card-slider-track');
+           const slides = track.querySelectorAll('img');
+           const prevBtn = slider.querySelector('.slider-prev');
+           const nextBtn = slider.querySelector('.slider-next');
+           
+           if(slides.length <= 1) {
+             prevBtn.style.display = 'none';
+             nextBtn.style.display = 'none';
+             return; 
+           }
+
+           let currentIndex = 0;
+           let autoSlideInterval;
+
+           const updateSlider = () => {
+             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+           };
+
+           const nextSlide = () => {
+             currentIndex = (currentIndex + 1) % slides.length;
+             updateSlider();
+           };
+
+           const prevSlide = () => {
+             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+             updateSlider();
+           };
+
+           const startAutoSlide = () => {
+             autoSlideInterval = setInterval(() => {
+               if (!document.body.contains(slider)) {
+                 clearInterval(autoSlideInterval);
+                 return;
+               }
+               nextSlide();
+             }, 3500); 
+           };
+
+           const resetAutoSlide = () => {
+             clearInterval(autoSlideInterval);
+             startAutoSlide();
+           };
+
+           nextBtn.addEventListener('click', (e) => {
+             e.preventDefault();
+             nextSlide();
+             resetAutoSlide();
+           });
+
+           prevBtn.addEventListener('click', (e) => {
+             e.preventDefault();
+             prevSlide();
+             resetAutoSlide();
+           });
+
+           slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+           slider.addEventListener('mouseleave', startAutoSlide);
+
+           startAutoSlide();
+         });
+       };
+       initSliders();
+     " />

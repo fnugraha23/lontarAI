@@ -1,0 +1,233 @@
+/* ========================================================
+   LONTARA DASHBOARD - World Bank Style Aesthetics
+   Project: Sub-DAS Tanralili Watershed Analytics
+   Author: Fajar Nugraha (Master of Soil Science)
+   ======================================================== */
+
+/* 1. VARIABEL & TEMA */
+:root {
+  --primary: #123b3a; /* Lontara Forest Green */
+  --accent: #00b8a9; /* Lontara Teal */
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+/* 2. GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", "Inter", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Mencegah scroll pada body utama agar split-screen stabil */
+}
+
+/* 3. NAVBAR / TOPBAR */
+.topbar {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  z-index: 20;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-back {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 700;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-back:hover {
+  background-color: var(--bg-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 4. LAYOUT SPLIT-SCREEN (MAP 55% / PANEL 45%) */
+#map {
+  height: 55vh;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 3px solid var(--accent);
+}
+
+#dashboard-panel {
+  height: 45vh;
+  overflow-y: auto;
+  padding: 30px 24px;
+  background-color: #f1f5f9;
+}
+
+.panel-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* 5. GRID & CHART CARDS (WB Aesthetic) */
+.grid-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.chart-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--bg-light);
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 220px;
+  width: 100%;
+}
+
+/* 6. DATA TABLE STYLES */
+.table-wrapper {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  padding: 16px 20px;
+  background-color: var(--bg-light);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--bg-light);
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.badge-warning {
+  background: #fffbeb;
+  color: #d97706;
+}
+.badge-danger {
+  background: #fef2f2;
+  color: #dc2626;
+}
+.text-accent {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* 7. CUSTOM SCROLLBAR (Elegan) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* 8. LEAFLET UI CUSTOMIZATION */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+}
+
+.leaflet-popup-content {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.leaflet-bar a {
+  color: var(--primary) !important;
+}
+
+.leaflet-bar a:hover {
+  color: var(--accent) !important;
+  background-color: var(--bg-light) !important;
+}

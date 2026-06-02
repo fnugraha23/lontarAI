@@ -1,0 +1,204 @@
+<!-- ==========================================================================
+   LONTARA TECH — HALAMAN DETAIL PRODUK
+   Lokasi: sumber-konten/layanan/otomasi-data/otomasi-data.html
+   Fungsi: Menampilkan detail spesifik, fitur, dan harga untuk Script Otomasi
+   ========================================================================== -->
+
+<!-- Bagian 1: Breadcrumb & Navigasi Kembali -->
+<section style="padding-top: 2rem; background-color: var(--bg-main);">
+  <div class="container">
+    <a href="#layanan" class="nav-link-ajax" style="color: var(--text-muted); font-size: 0.95rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Katalog Layanan
+    </a>
+  </div>
+</section>
+
+<!-- Bagian 2: Etalase Utama Produk (Gambar & Checkout Box) -->
+<section class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
+  <div class="container">
+    <div class="grid-2 align-start" style="gap: 4rem;">
+      
+      <!-- KOLOM KIRI: Galeri Gambar Produk -->
+      <div class="reveal-init">
+        <div class="card-slider-container" style="border-radius: var(--radius); box-shadow: var(--shadow-md); aspect-ratio: 4/3;">
+          <div class="card-slider-track">
+            <!-- Ganti dengan tangkapan layar script/notebook asli Lontara -->
+            <img src="https://placehold.co/800x600/00b8a9/ffffff?text=Python+Geopandas" alt="Python Script View">
+            <img src="https://placehold.co/800x600/2f2f2f/ffffff?text=GEE+Code+Editor" alt="GEE View">
+            <img src="https://placehold.co/800x600/f6416c/ffffff?text=Custom+ArcGIS+Toolbox" alt="Toolbox View">
+          </div>
+          <button class="slider-btn slider-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="slider-btn slider-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <!-- KOLOM KANAN: Informasi Pembelian -->
+      <div class="reveal-init" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block;">Kategori: Data Spasial & Pemrograman</span>
+        
+        <h1 style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 15px; line-height: 1.2;">
+          Script Otomasi Geospasial (Python & GEE)
+        </h1>
+        
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">
+          Tinggalkan proses <i>klik-klik</i> manual yang memakan waktu. Kami merancang algoritma dan <i>custom toolbox</i> khusus untuk mengeksekusi <i>batch processing</i> pada Big Data spasial (raster dan vektor) dengan efisiensi tinggi.
+        </p>
+
+        <!-- Kotak Harga & Keranjang -->
+        <div style="background-color: var(--bg-light); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 25px; box-shadow: var(--shadow-sm);">
+          
+          <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.1rem;">Rp 2.500.000</span>
+              <span style="background-color: #ef4444; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">HEMAT 20%</span>
+            </div>
+            <span style="font-weight: 800; color: var(--primary); font-size: 2.2rem;">Rp 2.000.000</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">*Harga dasar untuk 1 alur kerja (workflow) otomasi.</span>
+          </div>
+
+          <button class="btn-primary btn-add-cart" style="width: 100%; padding: 18px; font-size: 1.1rem; border-radius: 8px;"
+            data-id="SRV-AUTO-01" 
+            data-nama="Script Otomasi Geospasial" 
+            data-harga="2000000" 
+            data-kategori="Data Spasial">
+            <i class="fa-solid fa-cart-plus"></i> Tambah ke Keranjang
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Bagian 3: Spesifikasi & Detail Lengkap -->
+<section class="section" style="background-color: var(--bg-light); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="grid-2 align-start" style="gap: 4rem;">
+      
+      <!-- Deskripsi Panjang -->
+      <div class="reveal-init">
+        <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); border-bottom: 2px solid var(--accent); padding-bottom: 10px; display: inline-block;">
+          Deskripsi Layanan
+        </h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 15px;">
+          Dalam era analitik modern, memproses ratusan citra satelit atau dataset vektor skala nasional secara manual di dalam perangkat lunak GIS desktop adalah hal yang tidak lagi efisien. Layanan Otomasi Data Geospasial dari Lontara dirancang khusus untuk mengubah alur kerja (<i>workflow</i>) kompleks Anda menjadi satu skrip pemrograman yang berjalan dalam hitungan detik.
+        </p>
+        <p style="color: var(--text-muted); line-height: 1.8;">
+          Kami memanfaatkan pustaka ekosistem <strong>Python</strong> (seperti <i>Geopandas, Rasterio, ArcPy, PyQGIS</i>), <strong>R</strong>, hingga <strong>JavaScript</strong> di dalam lingkungan <strong>Google Earth Engine (GEE)</strong>. Layanan ini sangat ideal bagi peneliti, analis lingkungan, dan instansi pemetaan yang sering melakukan tugas berulang seperti ekstraksi indeks vegetasi <i>time-series</i>, pemotongan data massal (<i>batch clipping</i>), atau pembentukan parameter hidrologi.
+        </p>
+      </div>
+
+      <!-- Daftar Fitur (Checklist) -->
+      <div class="card reveal-init" style="padding: 2rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 20px;">Fitur & Deliverables</h3>
+        
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-code text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Clean & Documented Code</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Kode pemrograman (Jupyter Notebook `.ipynb` atau script `.py`/`.js`) yang bersih dan dilengkapi anotasi penjelasan langkah demi langkah.</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-gears text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Custom GIS Toolbox</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Opsi pengemasan skrip menjadi <i>Toolbox</i> mandiri berskala antarmuka grafis yang dapat langsung dicolok (<i>plug-in</i>) ke ArcGIS atau QGIS.</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+            <i class="fa-solid fa-earth-asia text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Google Earth Engine (GEE) Integration</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Pemrosesan <i>cloud-computing</i> untuk mengekstraksi citra satelit puluhan tahun tanpa menguras ruang penyimpanan lokal Anda.</span>
+            </div>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 15px;">
+            <i class="fa-solid fa-bolt text-accent" style="margin-top: 5px; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: var(--text-main); display: block;">Batch Processing Otomatis</strong>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Algoritma perulangan otomatis (<i>looping</i>) untuk memanipulasi ratusan folder atau file spasial dalam sekali eksekusi.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     ENGINE HYDRATION UNTUK SLIDER THUMBNAIL
+     ========================================== -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+     alt="Slider Hydrator" 
+     style="display:none;" 
+     onload="
+       const initSliders = () => {
+         const sliders = document.querySelectorAll('.card-slider-container');
+         
+         sliders.forEach(slider => {
+           const track = slider.querySelector('.card-slider-track');
+           const slides = track.querySelectorAll('img');
+           const prevBtn = slider.querySelector('.slider-prev');
+           const nextBtn = slider.querySelector('.slider-next');
+           
+           if(slides.length <= 1) {
+             prevBtn.style.display = 'none';
+             nextBtn.style.display = 'none';
+             return; 
+           }
+
+           let currentIndex = 0;
+           let autoSlideInterval;
+
+           const updateSlider = () => {
+             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+           };
+
+           const nextSlide = () => {
+             currentIndex = (currentIndex + 1) % slides.length;
+             updateSlider();
+           };
+
+           const prevSlide = () => {
+             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+             updateSlider();
+           };
+
+           const startAutoSlide = () => {
+             autoSlideInterval = setInterval(() => {
+               if (!document.body.contains(slider)) {
+                 clearInterval(autoSlideInterval);
+                 return;
+               }
+               nextSlide();
+             }, 3500); 
+           };
+
+           const resetAutoSlide = () => {
+             clearInterval(autoSlideInterval);
+             startAutoSlide();
+           };
+
+           nextBtn.addEventListener('click', (e) => {
+             e.preventDefault();
+             nextSlide();
+             resetAutoSlide();
+           });
+
+           prevBtn.addEventListener('click', (e) => {
+             e.preventDefault();
+             prevSlide();
+             resetAutoSlide();
+           });
+
+           slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+           slider.addEventListener('mouseleave', startAutoSlide);
+
+           startAutoSlide();
+         });
+       };
+       initSliders();
+     " />

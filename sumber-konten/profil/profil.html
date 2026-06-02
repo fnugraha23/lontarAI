@@ -1,0 +1,101 @@
+<section class="hero" style="min-height: 35vh; padding-bottom: 40px;">
+  <div class="container hero-content">
+    <h1 class="reveal-init">Pusat Komando Akun</h1>
+    <p class="reveal-init">Kelola identitas, pantau status proyek spasial, dan akses aset digital premium Anda di sini.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0; padding-bottom: 80px;">
+  <div class="container" style="max-width: 850px;">
+
+    <div id="profil-logged-out" class="card-form reveal-init" style="text-align: center; padding: 5rem 2rem;">
+      <i class="fa-solid fa-user-lock" style="font-size: 4rem; color: var(--border); margin-bottom: 1.5rem;"></i>
+      <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Akses Terkunci</h3>
+      <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Silakan autentikasi menggunakan akun Google Anda untuk mengakses dasbor klien Lontara dan melihat riwayat pesanan.
+      </p>
+      <button class="btn-primary btn-login" style="margin: 0 auto; font-size: 1.1rem; padding: 15px 30px;">
+        <i class="fa-brands fa-google"></i> Login dengan Google
+      </button>
+    </div>
+
+    <div id="profil-logged-in" class="reveal-init" style="display: none;">
+      
+      <div class="card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; padding: 2.5rem; margin-bottom: 2rem; border-top: 4px solid var(--primary);">
+        
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <img id="profil-avatar" src="aset/logo/favicon.png" alt="Avatar User" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-soft); box-shadow: var(--shadow-sm);">
+          
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,184,169,0.1); padding: 4px 10px; border-radius: 4px;">Klien Terverifikasi</span>
+            <h2 id="profil-nama" style="margin: 0.5rem 0; font-size: 1.8rem;">Memuat...</h2>
+            <p id="profil-email" style="color: var(--text-muted); margin: 0; font-weight: 600;">...</p>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-secondary btn-logout" style="border-color: #ef4444; color: #ef4444 !important;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+          </button>
+        </div>
+
+      </div>
+
+      <div class="grid-2">
+        <div class="card-form" style="padding: 2rem; border-left: 3px solid var(--primary);">
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-map-location-dot" style="color: var(--primary);"></i> Proyek Aktif
+          </h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Belum ada proyek pemodelan spasial atau WebGIS yang sedang berjalan saat ini.
+          </p>
+          <a href="#layanan" class="nav-link-ajax btn-secondary" style="font-size: 0.85rem; padding: 10px 20px; align-self: flex-start;">Pesan Layanan</a>
+        </div>
+        
+        <div class="card-form" style="padding: 2rem; border-left: 3px solid var(--accent);">
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-toolbox" style="color: var(--accent);"></i> Aset Digital Premium
+          </h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Anda belum memiliki lisensi aktif untuk Toolbox ArcGIS atau Dataset Premium kami.
+          </p>
+          <a href="#aset-digital" class="nav-link-ajax btn-secondary" style="font-size: 0.85rem; padding: 10px 20px; align-self: flex-start;">Lihat Katalog Data</a>
+        </div>
+      </div>
+
+    </div> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+         alt="SPA Hydrator" 
+         style="display:none;" 
+         onload="
+           const renderProfileData = () => {
+             const user = window.LontaraState ? window.LontaraState.user : null;
+             const loggedOutUI = document.getElementById('profil-logged-out');
+             const loggedInUI = document.getElementById('profil-logged-in');
+             
+             if (!loggedOutUI || !loggedInUI) return;
+             
+             if (user) {
+               // Tampilkan UI Login, Sembunyikan UI Logout
+               loggedOutUI.style.display = 'none';
+               loggedInUI.style.display = 'block';
+               
+               // Injeksi Data ke HTML
+               document.getElementById('profil-avatar').src = user.photoURL || 'aset/logo/favicon.png';
+               document.getElementById('profil-nama').textContent = user.displayName || 'Klien Lontara';
+               document.getElementById('profil-email').textContent = user.email || 'Email tidak tersedia';
+             } else {
+               // Kembalikan ke State Awal
+               loggedOutUI.style.display = 'block';
+               loggedInUI.style.display = 'none';
+             }
+           };
+
+           // Eksekusi segera saat gambar (halaman) dimuat
+           renderProfileData();
+
+           // Dengarkan perubahan jika user login/logout dari navbar saat berada di halaman ini
+           window.addEventListener('lontara:authUpdated', renderProfileData);
+         " />
+
+  </div>
+</section>
